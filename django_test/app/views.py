@@ -1,3 +1,15 @@
+import http.client
+
+from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render
 
-# Create your views here.
+from app.models import Post
+
+
+# Crear views here.
+
+
+def index(request: HttpRequest) -> HttpResponse:
+    qs = Post.objects.all()
+
+    return render(request, "app/index.html", {"post_list": qs})
