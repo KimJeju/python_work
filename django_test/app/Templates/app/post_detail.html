@@ -8,13 +8,7 @@
     <title>Django Page</title>
 </head>
 <body>
-    <h2>Post List</h2>
-
-{%for post in post_list %}
-    <div>
-        {{  post.title }}
-      {{ post.content }}
-    </div>
-{%  endfor %}
+        <h2>Post Detail : {{ post.title }}</h2>
+        {{ post.content }}
 </body>
 </html>
