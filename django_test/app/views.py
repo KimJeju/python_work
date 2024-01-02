@@ -1,5 +1,4 @@
-import http.client
-
+from django.contrib.auth.decorators import login_required
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import CreateView
@@ -11,7 +10,11 @@ from app.models import Post
 # Crear views here.
 
 
+@login_required
 def index(request: HttpRequest) -> HttpResponse:
+    # if not request.user.is_authenticated:
+    #     return redirect("/accounts/login")
+
     qs = Post.objects.all()
 
     return render(request, "app/index.html", {"post_list": qs})

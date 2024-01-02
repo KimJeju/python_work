@@ -14,7 +14,19 @@
 </head>
 <body>
     <div class="container">
+
+
+    {% if user.is_authenticated %}
+    <p>
+        logged by {{ user }}
+            <a href="/accounts/logout/">Logout</a>
+
+    </p>
+    {% else %}
+        <a href="/accounts/login/">Login</a>
+    {% endif %}
     <h2>장고 입문</h2>
+
 
     {% block content %}
     {% endblock %}
