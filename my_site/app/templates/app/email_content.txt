@@ -1,0 +1,1 @@
+{{ event.name |default:"무명"}} 이벤트 초대합니다.
