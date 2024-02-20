@@ -23,8 +23,6 @@ if env_path.exists():
     with env_path.open("rt") as f:
         env.read_env(f, overwrite=True)
 
-
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
@@ -35,7 +33,6 @@ SECRET_KEY = 'django-insecure-3+ix=-c^@h1g@3=v$1&*c$$_+7=k#_*qc9^8_2%55&1bra^*kp
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -48,7 +45,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_bootstrap5',
     'app',
-    "catube"
+    'catube',
+    'accounts'
 ]
 
 MIDDLEWARE = [
@@ -81,7 +79,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'my_site.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
@@ -91,7 +88,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -111,7 +107,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
@@ -122,7 +117,6 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
@@ -143,3 +137,24 @@ EMAIL_HOST_PASSWORD = env.str('EMAIL_HOST_PASSWORD')
 
 DEFAULT_FROM_EMAIL = f"{EMAIL_HOST_USER}@naver.com"
 
+# 로그인 후 이동할 주소
+LOGIN_REDIRECT_URL = "/app/"
+
+
+# 로깅
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {
+        "console": {
+            "level": "DEBUG",
+            "class": "logging.StreamHandler",
+        },
+    },
+    "loggers": {
+        "django.db.backends": {
+            "handlers": ["console"],
+            "level": "DEBUG",
+        },
+    }
+}
