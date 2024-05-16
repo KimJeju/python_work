@@ -47,7 +47,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    "player_crawling"
+    # "player_crawling"
 ]
 
 ROOT_URLCONF = "football_player_analysis.urls"
