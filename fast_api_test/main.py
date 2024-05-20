@@ -16,6 +16,7 @@ class Item(BaseModel):
 @app.get("/")
 def read_root():
     print(func_test.get_full_name("건휘", "김"))
+    print(func_test.get_name_with_age(name="뿡뿡이", age=1))
     return {"Hello": "World"}
 
 @app.get("/items/{item_id}")
