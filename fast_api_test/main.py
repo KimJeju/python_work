@@ -3,6 +3,8 @@ from typing import Union
 from fastapi import FastAPI
 from pydantic import BaseModel
 
+import func_test
+
 app = FastAPI()
 
 class Item(BaseModel):
@@ -13,6 +15,7 @@ class Item(BaseModel):
 
 @app.get("/")
 def read_root():
+    print(func_test.get_full_name("건휘", "김"))
     return {"Hello": "World"}
 
 @app.get("/items/{item_id}")
