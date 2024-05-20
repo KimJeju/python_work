@@ -3,5 +3,5 @@
   <component name="Black">
     <option name="sdkName" value="vir_base (3)" />
   </component>
-  <component name="ProjectRootManager" version="2" project-jdk-name="vir_base (3)" project-jdk-type="Python SDK" />
+  <component name="ProjectRootManager" version="2" project-jdk-name="vir_base" project-jdk-type="Python SDK" />
 </project>
