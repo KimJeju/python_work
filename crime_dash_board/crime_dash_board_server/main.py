@@ -1,5 +1,4 @@
 import uvicorn
-from typing import Union
 from fastapi import FastAPI
 
 # 컨르롤 라우터 선언
@@ -10,7 +9,7 @@ app.include_router(branch_crime_router.router)
 
 
 @app.get('/')
-def hone():
+def home():
     return {'app' : 'main'}
 
 if __name__ == "__main__":
