@@ -30,7 +30,7 @@ def get_categorize_crime_branch(year:str, branch:int, category:str):
     
         df = pd.DataFrame(csv_data)
         df = sort_crime_data(df)
-        dict_data[category] = df
+        dict_data[f"{category} ({year} {branch}분기)"] = df
     
         return dict_data
     except Exception:
