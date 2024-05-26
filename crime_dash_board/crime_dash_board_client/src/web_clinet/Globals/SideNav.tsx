@@ -20,10 +20,8 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import HistoryIcon from '@mui/icons-material/History';
 
 import { useNavigate } from 'react-router-dom';
-import { Link } from 'react-router-dom';
 
 const drawerWidth = 240;
-
 
 const openedMixin = (theme: Theme): CSSObject => ({
   width: drawerWidth,

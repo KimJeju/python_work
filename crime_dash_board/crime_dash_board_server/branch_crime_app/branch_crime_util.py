@@ -2,7 +2,6 @@ import pandas as pd;
 
 # 페이지 로딩 시 사용될 디폴트 메서드
 def get_default_crime_branch_data():
-    
     category = ['average','main', 'sub']
     dict_data = {}
     try:
@@ -11,15 +10,14 @@ def get_default_crime_branch_data():
 
             df = pd.DataFrame(csv_data)
             df = sort_crime_data(df)
-                        
+                                    
             dict_data[category[i]] = df
-        return csv_data        
+        return dict_data        
     except Exception:
         print(FileNotFoundError)    
         
 # 인자 값에 따른 데이터 불러오기 메서드
 def get_categorize_crime_branch(year:str, branch:int, category:str):
-    
     try:
         dict_data = {}
     
@@ -36,7 +34,7 @@ def get_categorize_crime_branch(year:str, branch:int, category:str):
 # 데이터 정리 메서드
 def sort_crime_data(data : pd.DataFrame):
     try:
-        data = data.transpose()
+        data =  data.transpose()
         data.rename(columns=data.iloc[0], inplace=True)
         data = data.drop(data.index[0])
                         

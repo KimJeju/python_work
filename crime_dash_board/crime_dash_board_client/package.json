@@ -16,6 +16,7 @@
     "@mui/material": "^5.15.18",
     "@popperjs/core": "^2.11.8",
     "@types/react-router-dom": "^5.3.3",
+    "axios": "^1.7.2",
     "bootstrap": "^5.3.3",
     "path": "^0.12.7",
     "react": "^18.2.0",

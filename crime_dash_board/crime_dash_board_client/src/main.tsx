@@ -1,15 +1,21 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App.tsx'
+// import App from './App.tsx'
 import './index.css'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
-import PageError from './web_clinet/Globals/PageError.tsx'
+import PageError from './web_clinet/globals/PageError.tsx'
+import Branch from './web_clinet/render/Branch.tsx'
 
 const router = createBrowserRouter([
   {
     path:'/',
-    element : <App />,
+    element : <Branch />,
     errorElement : <PageError />,
+  },
+  {
+    path:'/branch',
+    element : <Branch />,
+    errorElement : <PageError />
   }
 ])
 
