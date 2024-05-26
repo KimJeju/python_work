@@ -4,18 +4,18 @@ import ReactDOM from 'react-dom/client'
 import './index.css'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import PageError from './web_clinet/globals/PageError.tsx'
-import Crime_Branch from './web_clinet/render/Crime_Branch.tsx'
+import CrimeBranch from './web_clinet/render/crime_branch/CrimeBranch.tsx'
 import { RecoilRoot } from 'recoil'
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Crime_Branch />,
+    element: <CrimeBranch />,
     errorElement: <PageError />,
   },
   {
     path: '/branch',
-    element: <Crime_Branch />,
+    element: <CrimeBranch />,
     errorElement: <PageError />
   }
 ])
