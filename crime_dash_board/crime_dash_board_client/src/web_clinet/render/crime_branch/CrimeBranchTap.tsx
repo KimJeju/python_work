@@ -6,11 +6,11 @@ import TotalCrimeReport from './tab_render/TotalCrimeReport';
 function CrimeBranchTap() {
   return (
     <Tabs
-      defaultActiveKey="crime_branch"
+      defaultActiveKey="total"
       className="mb-3"
       style={{marginTop : "10px"}}
     >
-      <Tab eventKey="total" title="total" defaultChecked={true} style={{ width : "100px"}}>
+      <Tab eventKey="total" title="total" defaultChecked={true} style={{ width : "calc(100%)"}}>
         <TotalCrimeReport />
       </Tab>
       <Tab eventKey="main" title="main">
