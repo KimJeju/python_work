@@ -2,27 +2,34 @@ import styled from "styled-components"
 import { useRecoilValueLoadable } from "recoil"
 import { fetchCrimeBranchState } from "../../../state/Atoms/CrimeBranchAtoms"
 import SingDataBox from "../../../components/SingleDataBox";
-import BarChart from "../../../components/\bdata_chart/BarChart";
+import ToTalCrimeBarCharts from "../../../components/\bdata_chart/BarCharts";
 
-const Container = styled.div`
+const Wrapper = styled.div`
     padding : 1%;
-    height : calc(25vh);
+    height : calc(100vh);
+
+    // background-color : blue;
 
     display :flex;
     flex-direction : column;
+`
 
-    background-color : blue;
+const ChartWrapper = styled.div`
+    height : calc(100%);
+    margin-top : 2vh;
+    // background-color : grey;
 `
 
 const TotalContent = styled.div`
-    height : calc(30vh);
-
     display :flex;
     justify-content : space-between;
 `
 
 const BarContent = styled.div`
+    width : 500px;
+    height : 500px;
 
+    background-color : orange;
 `
 
 const DataTitle = styled.p`
@@ -45,7 +52,7 @@ export default function TotalCrimeReport() {
     const data_title: string = '총 계'
 
     return (
-        <Container>
+        <Wrapper>
             <DataTitle>{data_title}</DataTitle>
             <TotalContent>
                 {
@@ -55,10 +62,10 @@ export default function TotalCrimeReport() {
                 }
             </TotalContent>
 
-            <BarContent>
-                <BarChart data={data}/>
-            </BarContent>
-        </Container>
+            <ChartWrapper>
+                <ToTalCrimeBarCharts data={data}/>
+            </ChartWrapper>
+        </Wrapper>
     )
 }
 
