@@ -13,6 +13,14 @@ const ChartContainer = styled.div`
     align-items : center;
 
     border-radius : 1rem;
+    transition : 0.5s;
+
+    &:hover {
+        background-color : white;
+
+        box-shadow: rgba(0, 0, 0, 0.24) 3px 6px 16px;
+
+    }
 `
 
 export default function ToTalCrimeBarCharts({ data }: { data: Loadable<any> }) {
@@ -40,6 +48,8 @@ export default function ToTalCrimeBarCharts({ data }: { data: Loadable<any> }) {
                 width={850}
                 height={500}
                 layout="vertical"
+                grid={{vertical:true}}
+                margin={{right :10}}
             />
         </ChartContainer>
     )

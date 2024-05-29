@@ -2,7 +2,7 @@ import styled from "styled-components"
 import { useRecoilValueLoadable } from "recoil"
 import { fetchCrimeBranchState } from "../../../state/Atoms/CrimeBranchAtoms"
 import SingDataBox from "../../../components/SingleDataBox";
-import ToTalCrimeBarCharts from "../../../components/\bdata_chart/BarCharts";
+import ToTalCrimeBarCharts from "../../../components/\bdata_chart/ToTalCrimeBarCharts";
 
 const Wrapper = styled.div`
     padding : 1%;
