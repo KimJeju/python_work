@@ -10,13 +10,13 @@ function CrimeBranchTap() {
       className="mb-3"
       style={{marginTop : "10px"}}
     >
-      <Tab eventKey="total" title="total" defaultChecked={true} style={{ width : "calc(100%)"}}>
+      <Tab eventKey="total" title="총계" defaultChecked={true} style={{ width : "calc(100%)"}}>
         <TotalCrimeReport />
       </Tab>
-      <Tab eventKey="main" title="main">
+      <Tab eventKey="main" title="대분류">
         Tab content for main
       </Tab>
-      <Tab eventKey="sub" title="sub">
+      <Tab eventKey="sub" title="소분류">
         Tab content for sub
       </Tab>
     </Tabs>

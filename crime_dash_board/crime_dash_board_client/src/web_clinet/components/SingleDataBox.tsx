@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { BindingDataType } from "../render/crime_branch/tab_render/TotalCrimeReport";
-import { useState } from "react";
 
 const Container = styled.div`
     padding : 15px;
@@ -9,6 +8,16 @@ const Container = styled.div`
     height : 100px;
 
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius : 1rem;
+    transition : 0.5s;
+
+    &:hover {
+        background-color : white;
+
+        box-shadow: rgba(0, 0, 0, 0.24) 3px 6px 16px;
+
+    }
+
 `
 
 const Title = styled.h2`
@@ -18,34 +27,19 @@ const Title = styled.h2`
 
 const Content = styled.p`
     font-size : 30px;
+
+    transition : 0.5s;
+
+    &:hover {
+        font-size : 40px;
+    }
+
 `
 
 
 export default function SingDataBox({ avg_title, data }: BindingDataType) {
 
     const objectData : string = data as string;
-
-    // const replaceData = objectData.replace(",","");
-
-    // const [single, setSingle] = useState<number>(parseInt(replaceData));
-
-    // function onDataLoad() {
-
-    //     console.log("on load")
-    //     if(single >= 5000){
-    //     let animating_data = single - 5000;
-
-    //     for (let i = 0; animating_data === single; ++i) {
-    //         if (animating_data !== single) {
-
-    //             console.log(single);
-    //             setSingle(animating_data += i)
-    //         } else {
-    //             break;
-    //         }
-    //     }
-    // }
-    // }
 
     if (objectData.toString() === "대분류") {
         return (<></>)

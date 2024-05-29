@@ -2,22 +2,27 @@ import styled from "styled-components"
 import { useRecoilValueLoadable } from "recoil"
 import { fetchCrimeBranchState } from "../../../state/Atoms/CrimeBranchAtoms"
 import SingDataBox from "../../../components/SingleDataBox";
+import BarChart from "../../../components/\bdata_chart/BarChart";
 
 const Container = styled.div`
     padding : 1%;
-    height : calc(30vh);
+    height : calc(25vh);
 
     display :flex;
     flex-direction : column;
 
-    // background-color : blue;
+    background-color : blue;
 `
 
-const Content = styled.div`
+const TotalContent = styled.div`
     height : calc(30vh);
 
     display :flex;
     justify-content : space-between;
+`
+
+const BarContent = styled.div`
+
 `
 
 const DataTitle = styled.p`
@@ -42,13 +47,17 @@ export default function TotalCrimeReport() {
     return (
         <Container>
             <DataTitle>{data_title}</DataTitle>
-            <Content>
+            <TotalContent>
                 {
                     Object.entries(data.contents.average['총 계']).map((el, index) => (
-                        <SingDataBox key={index} data={el[1].toString()} avg_title={el[0]} />
+                        <SingDataBox key={index} data={el[1] as string} avg_title={el[0]} />
                     ))
                 }
-            </Content>
+            </TotalContent>
+
+            <BarContent>
+                <BarChart data={data}/>
+            </BarContent>
         </Container>
     )
 }
