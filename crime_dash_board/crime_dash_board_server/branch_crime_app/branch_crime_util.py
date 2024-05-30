@@ -9,6 +9,9 @@ def get_default_crime_branch_data():
             csv_data = pd.read_csv(f'./templates/crime_data/branch/2024/{category[i]}/crime_report_branch_1_2024_{category[i]}_crime_data.csv')
             df = pd.DataFrame(csv_data)
             df = sort_crime_data(df)
+            
+            df = df.astype(float)
+
             dict_data[category[i]] = df
         return dict_data       
     except Exception:
@@ -21,6 +24,9 @@ def get_categorize_crime_branch(year:str, branch:int, category:str):
         csv_data = pd.read_csv(f'./templates/crime_data/branch/{year}/{category}/crime_report_branch_{branch}_{year}_{category}_crime_data.csv')
         df = pd.DataFrame(csv_data)
         df = sort_crime_data(df)
+        
+        df = df.astype(float)
+        
         dict_data[f"{category} ({year} {branch}분기)"] = df
     
         return dict_data
