@@ -26,7 +26,7 @@ def get_categorize_crime_branch(year:str, branch:int, category:str):
         df = sort_crime_data(df)
         
         df = df.astype(float)
-        
+         
         dict_data[f"{category} ({year} {branch}분기)"] = df
     
         return dict_data
