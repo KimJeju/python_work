@@ -1,15 +1,13 @@
 
 
-export function ChartDataToArray(data : object) : Array<number>{
+export function ChartDataToArray(data: object): Array<number> {
 
-    const resultData : number[] = [];
+    const resultData: number[] = [];
 
-    Object.entries(data).map((value, index) => {   
-       
-        if(value[1] != "대분류 별 소계" &&  value[0].toString() != "법인체"){
-            const replaceStr = value[1] as string;
-            resultData.push(+replaceStr.toString().replace(",",""))
-        }
+    Object.entries(data).map((value, index) => {
+            const int_value = Number.parseInt(value[1])
+            resultData.push(int_value)
+        
     })
 
     return resultData;
