@@ -1,8 +1,11 @@
 import styled from "styled-components"
 import { useRecoilValueLoadable } from "recoil"
-import { fetchCrimeBranchState } from "../../../state/Atoms/CrimeBranchAtoms"
+import { fetchCrimeBranchState } from "../../../state/crime_branch/CrimeBranchState"
 import SingDataBox from "../../../components/SingleDataBox";
 import ToTalCrimeBarCharts from "../../../components/\bdata_chart/ToTalCrimeBarCharts";
+import AverageSubjectPieChart from "../../../components/\bdata_chart/AverageSubjectPieChart";
+import { useEffect, useMemo } from "react";
+import { get_average_subject_data } from "../../../contexts/CrimeBranchContext";
 
 const Wrapper = styled.div`
     padding : 1%;
@@ -23,13 +26,6 @@ const ChartWrapper = styled.div`
 const TotalContent = styled.div`
     display :flex;
     justify-content : space-between;
-`
-
-const BarContent = styled.div`
-    width : 500px;
-    height : 500px;
-
-    background-color : orange;
 `
 
 const DataTitle = styled.p`
@@ -63,7 +59,8 @@ export default function TotalCrimeReport() {
             </TotalContent>
 
             <ChartWrapper>
-                <ToTalCrimeBarCharts data={data}/>
+                <AverageSubjectPieChart />
+                <ToTalCrimeBarCharts data={data} />
             </ChartWrapper>
         </Wrapper>
     )

@@ -23,7 +23,7 @@ def categorize_crime_branch(year:str, branch:int, category:str):
     return categorize_crime_data
 
 @router.get('/average_subject')
-def average_subject_crime_data(select_data : str):
-    subject_crime_data = branch_crime_util.get_default_average_subject_crime_data(select_data)
+def average_subject_crime_data(category:str, select_data : str):
+    subject_crime_data = branch_crime_util.get_default_average_subject_crime_data(category,select_data)
     return subject_crime_data
     

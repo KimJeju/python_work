@@ -9,7 +9,7 @@ const Container = styled.div`
 
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     border-radius : 1rem;
-    transition : 0.5s;
+    transition : 0.2s;
 
     &:hover {
         background-color : white;
@@ -28,7 +28,7 @@ const Title = styled.h2`
 const Content = styled.p`
     font-size : 30px;
 
-    transition : 0.5s;
+    transition : 0.2s;
 
     &:hover {
         font-size : 40px;

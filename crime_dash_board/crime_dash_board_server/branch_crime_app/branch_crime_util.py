@@ -36,21 +36,21 @@ def get_categorize_crime_branch(year:str, branch:int, category:str):
         print(FileNotFoundError)    
         return "FILE NOT FOUND"
 
-def get_default_average_subject_crime_data(select_data : str):
+def get_default_average_subject_crime_data(category:str,select_data : str):
     try:
-       csv_data = pd.read_csv(f'./templates/crime_data/branch/2024/average/crime_report_branch_1_2024_average_crime_data.csv')
+       csv_data = pd.read_csv(f'./templates/crime_data/branch/2024/{category}/crime_report_branch_1_2024_{category}_crime_data.csv')
        df = pd.DataFrame(csv_data)
        df = sort_crime_data(df)
        
-       diff_df = df[df.columns.difference(["총 계"])]
+       diff_df = df[df.columns.difference(["총 계"])] #총계 제외
+       
        subject_data = diff_df.loc[select_data]
        return subject_data
     except Exception:
         print(Exception)
     
 
-        
-
+    
 # 데이터 정리 메서드
 def sort_crime_data(data : pd.DataFrame):
     try:
