@@ -11,5 +11,6 @@ export interface IPieChartData {
 }
 
 export interface ILineChartData {
+    DynamicSubjectColums : string [];
     DynamicSubject : number [];
 }

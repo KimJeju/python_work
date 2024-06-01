@@ -7,8 +7,6 @@ import styled from "styled-components";
 import { Typography } from "@mui/material";
 
 const ChartContainer = styled.div`
-    width : calc(50%);
-
     display : flex;
     align-items : center;
     flex-direction : column;
@@ -16,6 +14,8 @@ const ChartContainer = styled.div`
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     border-radius : 1rem;
     transition : 0.2s;
+
+    padding : 1vw;
 
     &:hover {
         background-color : white;
@@ -68,7 +68,7 @@ export default function ToTalCrimeBarCharts({ data }: { data: Loadable<any> }) {
                     { data: moral_crime_main, label: '풍속 범죄 (소계)' },
                 ]}
                 width={850}
-                height={300}
+                height={280}
                 layout="vertical"
                 grid={{ vertical: true }}
             />
@@ -82,7 +82,7 @@ export default function ToTalCrimeBarCharts({ data }: { data: Loadable<any> }) {
                     { data: moral_crime_sub },
                 ]}
                 width={850}
-                height={300}
+                height={280}
                 layout="vertical"
                 grid={{ vertical: true }}
             />

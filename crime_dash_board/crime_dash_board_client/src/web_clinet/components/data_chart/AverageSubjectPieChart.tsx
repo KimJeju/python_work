@@ -14,13 +14,10 @@ const IPieContent = styled.div`
     align-items : center;
     flex-direction : column;
 
-    width : calc(25%);
-    height : calc(26%);
+    width : calc(50%);
 
     padding : 5px;
     margin-bottom : 1%;
-
-    
 
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     border-radius : 1rem;

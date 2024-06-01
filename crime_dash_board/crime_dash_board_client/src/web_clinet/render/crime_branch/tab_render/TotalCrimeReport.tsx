@@ -8,18 +8,29 @@ import DynamicSubjectLineChart from "../../../components/\bdata_chart/DynamicSub
 
 const Wrapper = styled.div`
     padding : 1%;
-    height : calc(100vh);
-
-    // background-color : blue;
 
     display :flex;
     flex-direction : column;
+
+
 `
 
-const ChartWrapper = styled.div`
-    height : calc(100%);
+const ChartContainer = styled.div`
+    display : flex;
+    flex-direction : row;
+`
+
+const LeftChartWrapper = styled.div`
+    height : calc(90%);
     margin-top : 2vh;
-    // background-color : grey;
+    margin-right : 1vw;
+`
+
+const RightChartWrapper = styled.div`
+    height : calc(100%- 100px);
+    margin-top : 2vh;
+    margin-left : 1vw;
+
 `
 
 const TotalContent = styled.div`
@@ -57,12 +68,16 @@ export default function TotalCrimeReport() {
                 }
             </TotalContent>
 
-            <ChartWrapper>
-                <AverageSubjectPieChart />
-                <ToTalCrimeBarCharts data={data} />
-            </ChartWrapper>
+            <ChartContainer>
+                <LeftChartWrapper>
+                    <AverageSubjectPieChart />
+                    <ToTalCrimeBarCharts data={data} />
+                </LeftChartWrapper>
 
-            <DynamicSubjectLineChart />
+                <RightChartWrapper>
+                    <DynamicSubjectLineChart />
+                </RightChartWrapper>
+            </ChartContainer>
         </Wrapper>
     )
 }
