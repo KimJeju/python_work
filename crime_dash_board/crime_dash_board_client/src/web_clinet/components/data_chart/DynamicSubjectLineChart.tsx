@@ -15,7 +15,7 @@ const ChartContainer = styled.div`
     border-radius : 1rem;
     transition : 0.2s;
 
-    padding : 2vh;
+    padding : 0.5vw;
 
     &:hover {
         background-color : white;
