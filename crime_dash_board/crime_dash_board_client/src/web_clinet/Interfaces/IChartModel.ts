@@ -10,3 +10,6 @@ export interface IPieChartData {
     AverageSubject : number[];
 }
 
+export interface ILineChartData {
+    DynamicSubject : number [];
+}

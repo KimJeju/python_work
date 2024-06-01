@@ -4,6 +4,7 @@ import { fetchCrimeBranchState } from "../../../state/crime_branch/CrimeBranchSt
 import SingDataBox from "../../../components/SingleDataBox";
 import ToTalCrimeBarCharts from "../../../components/\bdata_chart/ToTalCrimeBarCharts";
 import AverageSubjectPieChart from "../../../components/\bdata_chart/AverageSubjectPieChart";
+import DynamicSubjectLineChart from "../../../components/\bdata_chart/DynamicSubjectLineChart";
 
 const Wrapper = styled.div`
     padding : 1%;
@@ -60,6 +61,8 @@ export default function TotalCrimeReport() {
                 <AverageSubjectPieChart />
                 <ToTalCrimeBarCharts data={data} />
             </ChartWrapper>
+
+            <DynamicSubjectLineChart />
         </Wrapper>
     )
 }

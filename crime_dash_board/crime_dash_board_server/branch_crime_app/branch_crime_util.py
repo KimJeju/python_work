@@ -58,10 +58,12 @@ def get_dynamic_subject_crime_data(year:str, branch:int, category:str, subject:s
         df = pd.DataFrame(csv_data)
         df = sort_crime_data(df)
         
-        extraction_df = df.loc[subject]
+        diff_df = df[df.columns.difference(["총 계"])] #총계 제외
+        
+        extraction_data = diff_df.loc[subject]
             
-        dict_data[subject] = extraction_df
-        return dict_data    
+        extraction_data
+        return extraction_data    
     except Exception:
         print(Exception)
         
