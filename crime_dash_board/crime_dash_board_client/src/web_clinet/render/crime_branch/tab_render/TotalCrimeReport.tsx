@@ -4,8 +4,6 @@ import { fetchCrimeBranchState } from "../../../state/crime_branch/CrimeBranchSt
 import SingDataBox from "../../../components/SingleDataBox";
 import ToTalCrimeBarCharts from "../../../components/\bdata_chart/ToTalCrimeBarCharts";
 import AverageSubjectPieChart from "../../../components/\bdata_chart/AverageSubjectPieChart";
-import { useEffect, useMemo } from "react";
-import { get_average_subject_data } from "../../../contexts/CrimeBranchContext";
 
 const Wrapper = styled.div`
     padding : 1%;

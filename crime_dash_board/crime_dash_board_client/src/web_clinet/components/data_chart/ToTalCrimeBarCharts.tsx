@@ -5,7 +5,6 @@ import { chart_data_to_array, slice_total_avg_data } from "../../utils/ChartData
 
 import styled from "styled-components";
 import { Typography } from "@mui/material";
-import { useState } from "react";
 
 const ChartContainer = styled.div`
     width : calc(50%);
@@ -35,8 +34,6 @@ const MiddleLine = styled.div`
 `
 
 export default function ToTalCrimeBarCharts({ data }: { data: Loadable<any> }) {
-
-    const [skipAnimation, setSkipAnimation] = useState(false);
 
     const average = data.contents.average;
 
@@ -74,7 +71,6 @@ export default function ToTalCrimeBarCharts({ data }: { data: Loadable<any> }) {
                 height={300}
                 layout="vertical"
                 grid={{ vertical: true }}
-                skipAnimation={skipAnimation}
             />
             <MiddleLine />
             <BarChart
@@ -89,7 +85,6 @@ export default function ToTalCrimeBarCharts({ data }: { data: Loadable<any> }) {
                 height={300}
                 layout="vertical"
                 grid={{ vertical: true }}
-            // margin={{right :10}}
             />
         </ChartContainer>
     )
