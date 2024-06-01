@@ -26,4 +26,13 @@ def categorize_crime_branch(year:str, branch:int, category:str):
 def average_subject_crime_data(category:str, select_data : str):
     subject_crime_data = branch_crime_util.get_default_average_subject_crime_data(category,select_data)
     return subject_crime_data
-    
+
+@router.get('/dynamic_subject')
+def dynamic_subject_crime_data(year:str, branch:int, category:str, subject:str):
+    dynamic_subject_crime_data = branch_crime_util.get_dynamic_subject_crime_data(year,branch,category,subject)
+    return dynamic_subject_crime_data
+
+@router.get('/number_of_occurrences')
+def number_of_occurrences_crime_data():
+    occurrences_crime_data = branch_crime_util.get_all_total_branch_number_of_occurrences()
+    return occurrences_crime_data

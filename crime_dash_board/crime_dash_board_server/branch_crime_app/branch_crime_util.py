@@ -36,6 +36,7 @@ def get_categorize_crime_branch(year:str, branch:int, category:str):
         print(FileNotFoundError)    
         return "FILE NOT FOUND"
 
+#프론트엔드 랜더링 시 기본으로 가져올 함수
 def get_default_average_subject_crime_data(category:str,select_data : str):
     try:
        csv_data = pd.read_csv(f'./templates/crime_data/branch/2024/{category}/crime_report_branch_1_2024_{category}_crime_data.csv')
@@ -48,9 +49,43 @@ def get_default_average_subject_crime_data(category:str,select_data : str):
        return subject_data
     except Exception:
         print(Exception)
+        
+def get_dynamic_subject_crime_data(year:str, branch:int, category:str, subject:str):    
+    dict_data = {}
+    try:
+        csv_data = pd.read_csv(f'./templates/crime_data/branch/{year}/{category}/crime_report_branch_{branch}_{year}_{category}_crime_data.csv')
+            
+        df = pd.DataFrame(csv_data)
+        df = sort_crime_data(df)
+        
+        extraction_df = df.loc[subject]
+            
+        dict_data[subject] = extraction_df
+        return dict_data    
+    except Exception:
+        print(Exception)
+        
+def get_all_total_branch_number_of_occurrences():
+    year = [2024]
+    category = "average"
+    branch = [1,2,3,4]
     
-
-    
+    dict_data = {}
+        
+    try:
+        for i in range(0,4):
+            csv_data = pd.read_csv(f'./templates/crime_data/branch/2023/{category}/crime_report_branch_{branch[i]}_2023_{category}_crime_data.csv')
+            df = pd.DataFrame(csv_data)
+            df = sort_crime_data(df)
+        
+            extraction_df = df.loc["발생건수"]
+            
+            dict_data[f"{branch[i]}분기"] = extraction_df
+        return dict_data    
+    except Exception:
+        print(Exception)
+        
+        
 # 데이터 정리 메서드
 def sort_crime_data(data : pd.DataFrame):
     try:

@@ -1,9 +1,9 @@
-import { useMemo, useState } from 'react'
+import { useMemo } from 'react'
 import './App.css'
 import SideNav from './web_clinet/globals/SideNav'
 import CrimeBranch from './web_clinet/render/crime_branch/CrimeBranch'
 import { get_average_subject_data } from './web_clinet/contexts/CrimeBranchContext'
-import { useRecoilState, useSetRecoilState } from 'recoil'
+import { useRecoilState } from 'recoil'
 import { subjectAverageState } from './web_clinet/state/crime_branch/SubjectAverageState'
 
 export function App() {
