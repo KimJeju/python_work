@@ -50,7 +50,7 @@ export default function SwarmPlotChart() {
                         ]
                     ]
                 }}
-                padding={1}
+                padding={20}
                 leavesOnly={true}
                 enableLabels={true}
                 label="id"
