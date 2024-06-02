@@ -11,11 +11,15 @@ const ChartContainer = styled.div`
     align-items : center;
     flex-direction : column;
 
+    height: calc(50%);
+
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     border-radius : 1rem;
     transition : 0.2s;
 
     padding : 0.5vw;
+
+    margin-top : 1vh;
 
     &:hover {
         background-color : white;
@@ -33,8 +37,6 @@ export default function DynamicSubjectLineChart() {
         DynamicSubjectColums: chart_data_columns_to_array(data),
         DynamicSubject: chart_data_to_array(data)
     }
-
-    console.log(line_data.DynamicSubjectColums);
 
     return (
         <ChartContainer>

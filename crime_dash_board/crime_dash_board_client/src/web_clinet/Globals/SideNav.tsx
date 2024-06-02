@@ -143,7 +143,7 @@ export default function SideNav() {
         </DrawerHeader>
         <Divider />
         <List>
-          {['branch', '미정1', '미정2', '미정3'].map((text, index) => (
+          {['경찰청데이터', '미정1', '미정2', '미정3'].map((text, index) => (
             <ListItem key={text} disablePadding sx={{ display: 'block' }} onClick={() => {handleNavigate(index)}}>
               <ListItemButton
                 sx={{

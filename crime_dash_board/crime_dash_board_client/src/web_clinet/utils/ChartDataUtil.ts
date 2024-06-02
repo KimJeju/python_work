@@ -1,3 +1,4 @@
+import { IDictData, ISwarmPlotData, ISwarmPlotDataList } from "../Interfaces/IChartModel";
 
 
 export function chart_data_to_array(data: object): Array<number> {
@@ -22,6 +23,24 @@ export function chart_data_columns_to_array(data:object){
     })
 
     return result_data;
+}
+
+export function get_swarm_chart_data_key_pair_value(data:object){
+
+    const swarm_list : ISwarmPlotDataList = {
+        children : []
+    }
+
+    Object.entries(data).map((value) => {   
+
+        const swarm_data : ISwarmPlotData = {
+            name : value[0],
+            value : value[1]
+        }
+
+        swarm_list.children.push(swarm_data);
+    })
+     return swarm_list;
 }
 
 export function slice_total_avg_data(data:number[]) : [number[], number[]]{

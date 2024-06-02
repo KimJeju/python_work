@@ -2,9 +2,11 @@ import styled from "styled-components"
 import { useRecoilValueLoadable } from "recoil"
 import { fetchCrimeBranchState } from "../../../state/crime_branch/CrimeBranchState"
 import SingDataBox from "../../../components/SingleDataBox";
-import ToTalCrimeBarCharts from "../../../components/\bdata_chart/ToTalCrimeBarCharts";
-import AverageSubjectPieChart from "../../../components/\bdata_chart/AverageSubjectPieChart";
-import DynamicSubjectLineChart from "../../../components/\bdata_chart/DynamicSubjectLineChart";
+import ToTalCrimeBarCharts from "../../../components/data_chart/ToTalCrimeBarCharts";
+import AverageSubjectPieChart from "../../../components/data_chart/AverageSubjectPieChart";
+import DynamicSubjectLineChart from "../../../components/data_chart/DynamicSubjectLineChart";
+import Test from "../../../components/data_chart/SwarmPlotChart";
+import SwarmPlotChart from "../../../components/data_chart/SwarmPlotChart";
 
 const Wrapper = styled.div`
     padding : 1%;
@@ -18,16 +20,21 @@ const Wrapper = styled.div`
 const ChartContainer = styled.div`
     display : flex;
     flex-direction : row;
+    justify-content : space-between;
 `
 
 const LeftChartWrapper = styled.div`
-    height : calc(90%);
+    display : flex;
+    flex-direction : column;
     margin-top : 2vh;
     margin-right : 1vw;
 `
 
 const RightChartWrapper = styled.div`
-    height : calc(100%- 100px);
+    display : flex;
+    flex-direction : column;
+
+
     margin-top : 2vh;
     margin-left : 1vw;
 
@@ -75,6 +82,7 @@ export default function TotalCrimeReport() {
                 </LeftChartWrapper>
 
                 <RightChartWrapper>
+                    <SwarmPlotChart />
                     <DynamicSubjectLineChart />
                 </RightChartWrapper>
             </ChartContainer>

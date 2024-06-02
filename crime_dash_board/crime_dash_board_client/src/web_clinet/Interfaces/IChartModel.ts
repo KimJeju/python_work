@@ -14,3 +14,18 @@ export interface ILineChartData {
     DynamicSubjectColums : string [];
     DynamicSubject : number [];
 }
+
+export interface ISwarmPlotData {
+    "name" : string;
+    "value" : number;
+}
+
+
+export interface ISwarmPlotDataList {
+    "children" : ISwarmPlotData[];
+}
+
+
+export interface IDictData {
+    [key : string ]:number;
+}
