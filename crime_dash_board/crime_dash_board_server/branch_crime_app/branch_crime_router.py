@@ -17,6 +17,11 @@ def default_crime_branch():
     default_crime_data = branch_crime_util.get_default_crime_branch_data()
     return default_crime_data
 
+@router.get("/seleted")
+def selected_crime_branch(year:str, branch:int):
+    default_crime_data = branch_crime_util.get_selected_crime_branch_data(year,branch)
+    return default_crime_data
+
 @router.get('/categorize')
 def categorize_crime_branch(year:str, branch:int, category:str):
     categorize_crime_data = branch_crime_util.get_categorize_crime_branch(year=year, branch=branch, category=category)

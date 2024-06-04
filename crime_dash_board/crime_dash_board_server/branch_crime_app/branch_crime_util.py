@@ -17,6 +17,24 @@ def get_default_crime_branch_data():
     except Exception:
         print(FileNotFoundError)   
         return "FILE NOT FOUND"
+
+# 페이지 로딩 시 사용될 디폴트 메서드
+def get_selected_crime_branch_data(year:int, branch:int ):
+    category = ['average','main', 'sub']
+    dict_data = {}
+    try:
+        for i in range(0,3):     
+            csv_data = pd.read_csv(f'./templates/crime_data/branch/{year}/{category[i]}/crime_report_branch_{branch}_{year}_{category[i]}_crime_data.csv')
+            df = pd.DataFrame(csv_data)
+            df = sort_crime_data(df)
+            
+            df = df.astype(float)
+
+            dict_data[category[i]] = df
+        return dict_data       
+    except Exception:
+        print(FileNotFoundError)   
+        return "FILE NOT FOUND"
  
         
 # 인자 값에 따른 데이터 불러오기 메서드

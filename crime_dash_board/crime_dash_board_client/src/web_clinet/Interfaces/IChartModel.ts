@@ -29,3 +29,9 @@ export interface ISwarmPlotDataList {
 export interface IDictData {
     [key : string ]:number;
 }
+
+export interface ICrimeBranchSelect {
+    "label" : string,
+    "year" : number,
+    "branch" : number
+}

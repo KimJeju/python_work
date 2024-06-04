@@ -5,7 +5,6 @@ import SingDataBox from "../../../components/SingleDataBox";
 import ToTalCrimeBarCharts from "../../../components/data_chart/ToTalCrimeBarCharts";
 import AverageSubjectPieChart from "../../../components/data_chart/AverageSubjectPieChart";
 import DynamicSubjectLineChart from "../../../components/data_chart/DynamicSubjectLineChart";
-import Test from "../../../components/data_chart/SwarmPlotChart";
 import SwarmPlotChart from "../../../components/data_chart/SwarmPlotChart";
 
 const Wrapper = styled.div`
