@@ -15,31 +15,26 @@ const useStyles = makeStyles()(() => {
         padding : "15px",
         display : "flex",
         flexDirection: "column",
-        backgroundColor : "red"
     },
     data_title : {
-        fontSize : "2.2rem"
+        fontSize : "2.2rem",
+        marginBottom : "1vh"
     },
     total_avg_container : {
         display : "flex",
         justifyContent : "space-between"
+    },
+    chart_container : {
+        display : "flex",
+        flexDirection : "row",
+        marginTop : "2vh",
+    },
+    left_chart_container : {
+        display : "flex",
+        justifyContent : "space-between",
     }
 };
 });
-
-
-const ChartContainer = styled.div`
-    display : flex;
-    flex-direction : row;
-    justify-content : space-between;
-`
-
-const LeftChartWrapper = styled.div`
-    display : flex;
-    flex-direction : column;
-    margin-top : 2vh;
-    margin-right : 1vw;
-`
 
 const RightChartWrapper = styled.div`
     display : flex;
@@ -78,17 +73,18 @@ export default function TotalCrimeReport() {
                 }
             </Grid>
 
-            <ChartContainer>
-                <LeftChartWrapper>
+            <Grid xs={12} className={classes.chart_container}>
+                <Grid container className={classes.left_chart_container}>
+                    <AverageSubjectPieChart />
                     <AverageSubjectPieChart />
                     <ToTalCrimeBarCharts data={data} />
-                </LeftChartWrapper>
+                </Grid>
 
                 <RightChartWrapper>
                     <SwarmPlotChart />
                     <DynamicSubjectLineChart />
                 </RightChartWrapper>
-            </ChartContainer>
+            </Grid>
         </Grid>
     )
 }

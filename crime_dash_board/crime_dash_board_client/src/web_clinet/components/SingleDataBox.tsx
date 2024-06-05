@@ -1,53 +1,40 @@
-import styled from "styled-components";
 import { BindingDataType } from "../render/crime_branch/tab_render/TotalCrimeReport";
 import { Grid } from "@mui/material";
 import { makeStyles } from 'tss-react/mui';
 
 const useStyles = makeStyles()(() => {
     return {
-      root: {
-        padding : "15px",
-        marginLeft : "1vw",
-        boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
-        borderRadius : "1rem",
-        transition : "0.2s",     
-        '&hover' : {
-            backgroundColor : "white",
-            boxShadow: "rgba(0, 0, 0, 0.24) 3px 6px 16px"
-        } 
-    }};
+        root: {
+            padding: "15px",
+            marginLeft: "1vw",
+            boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
+            borderRadius: "1rem",
+            transition: "0.2s",
+            '&:hover': {
+                backgroundColor: "white",
+                boxShadow: "rgba(0, 0, 0, 0.24) 3px 6px 16px"
+            }
+        },
+        title: {
+            fontSize: "1.2rem",
+            fontWeight: "bold"
+        },
+        content: {
+            fontSize: "1.6rem",
+            transition: "0.5s",
+            '&:hover': {
+                fontSize: "2.2rem"
+            }
+        }
+
+
+    };
 });
-
-const Container = styled.div`
-    
-
-    &:hover {
-     
-
-    }
-
-`
-
-const Title = styled.h2`
-    font-size : 16px;
-    font-weight: bold;
-`
-
-const Content = styled.p`
-    font-size : 30px;
-
-    transition : 0.2s;
-
-    &:hover {
-        font-size : 40px;
-    }
-
-`
 
 
 export default function SingDataBox({ avg_title, data }: BindingDataType) {
 
-    const objectData : string = data as string;
+    const objectData: string = data as string;
     const { classes } = useStyles();
 
     if (objectData.toString() === "대분류") {
@@ -55,9 +42,13 @@ export default function SingDataBox({ avg_title, data }: BindingDataType) {
     } else {
         return (
             <Grid item xs={2} className={classes.root}>
-                {objectData.toString() === "대분류" ? "" : <Title>{avg_title}</Title>}
+                {objectData.toString() === "대분류" ? "" : <p className={classes.title}>{avg_title}</p>}
 
-                {avg_title === "발생대비\n검거건수(%)" ? <Content>{objectData} %</Content> : <Content>{objectData} 건</Content>}
+                {avg_title === "발생대비\n검거건수(%)" ?
+                    <p className={classes.content}>{objectData} %</p>
+                    :
+                    <p className={classes.content}>{objectData} 건</p>
+                }
             </Grid>
         )
     }

@@ -4,26 +4,27 @@ import { IBarChartData } from "../../Interfaces/IChartModel";
 import { chart_data_to_array, slice_total_avg_data } from "../../utils/ChartDataUtil";
 
 import styled from "styled-components";
-import { Typography } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
+import { makeStyles } from "tss-react/mui";
 
-const ChartContainer = styled.div`
-    display : flex;
-    align-items : center;
-    flex-direction : column;
 
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    border-radius : 1rem;
-    transition : 0.2s;
-
-    padding : 1vw;
-
-    &:hover {
-        background-color : white;
-
-        box-shadow: rgba(0, 0, 0, 0.24) 3px 6px 16px;
-
-    }
-`
+const useStyles = makeStyles()(() => {
+    return {
+        root: {
+            display: "flex",
+            alignItems: "center",
+            flexDirection: "column",
+            boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
+            borderRadius: "1rem",
+            transition: "0.2s",
+            padding: "1vw",
+            "&:hover": {
+                backgroundColor: "white",
+                boxShadow: "rgba(0, 0, 0, 0.24) 3px 6px 16px",
+            }
+        },
+    };
+});
 
 const MiddleLine = styled.div`
     width : calc(85%);
@@ -35,6 +36,7 @@ const MiddleLine = styled.div`
 
 export default function ToTalCrimeBarCharts({ data }: { data: Loadable<any> }) {
 
+    const { classes } = useStyles();
     const average = data.contents.average;
 
     const ChartData: IBarChartData = {
@@ -57,7 +59,7 @@ export default function ToTalCrimeBarCharts({ data }: { data: Loadable<any> }) {
 
 
     return (
-        <ChartContainer>
+        <Grid container className={classes.root}>
             <Typography>분류별 통계</Typography>
             <BarChart
                 xAxis={[{ scaleType: 'band', data: ['검거 건수', '검거인원'] }]}
@@ -67,7 +69,7 @@ export default function ToTalCrimeBarCharts({ data }: { data: Loadable<any> }) {
                     { data: force_crime_main, label: '폭력 범죄 (소계)' },
                     { data: moral_crime_main, label: '풍속 범죄 (소계)' },
                 ]}
-                width={850}
+                // width={850}
                 height={280}
                 layout="vertical"
                 grid={{ vertical: true }}
@@ -81,11 +83,11 @@ export default function ToTalCrimeBarCharts({ data }: { data: Loadable<any> }) {
                     { data: force_crime_main_sub },
                     { data: moral_crime_sub },
                 ]}
-                width={850}
+                // width={850}
                 height={280}
                 layout="vertical"
                 grid={{ vertical: true }}
             />
-        </ChartContainer>
+        </Grid>
     )
 }

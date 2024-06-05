@@ -11,7 +11,7 @@ import { selected_branch_crime_data } from "../../contexts/CrimeBranchContext";
 const Container = styled.div`
  width : calc(100% - 5vw);
  height : 100vh;
- margin : 5.5%;
+ margin : 5%;
 `
 
 
