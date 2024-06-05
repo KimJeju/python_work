@@ -4,33 +4,32 @@ import { dynamicSubjectState } from "../../state/crime_branch/DynamicSubjectStat
 import { ILineChartData } from "../../Interfaces/IChartModel";
 import { chart_data_columns_to_array, chart_data_to_array } from "../../utils/ChartDataUtil";
 import { LineChart } from "@mui/x-charts";
+import { makeStyles } from "tss-react/mui";
+import { Grid } from "@mui/material";
 
 
-const ChartContainer = styled.div`
-    display : flex;
-    align-items : center;
-    flex-direction : column;
+const useStyles = makeStyles()(() => {
+    return {
+        root: {
+            display: "flex",
+            alignItems: "center",
+            flexDirection: "column",
+            boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
+            borderRadius: "1rem",
+            transition: "0.2s",
+            "&:hover": {
+                backgroundColor: "white",
+                boxShadow: "rgba(0, 0, 0, 0.24) 3px 6px 16px",
 
-    height: calc(50%);
+            }
+        },
+    };
+});
 
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    border-radius : 1rem;
-    transition : 0.2s;
-
-    padding : 0.5vw;
-
-    margin-top : 1vh;
-
-    &:hover {
-        background-color : white;
-
-        box-shadow: rgba(0, 0, 0, 0.24) 3px 6px 16px;
-
-    }
-`
 
 export default function DynamicSubjectLineChart() {
 
+    const { classes } = useStyles();
     const data = useRecoilValue(dynamicSubjectState);
 
     const line_data: ILineChartData = {
@@ -39,7 +38,7 @@ export default function DynamicSubjectLineChart() {
     }
 
     return (
-        <ChartContainer>
+        <Grid xs={16} className={classes.root}>
             <LineChart
                 xAxis={[{ scaleType: 'point', data: line_data.DynamicSubjectColums }]}
                 series={[
@@ -50,8 +49,7 @@ export default function DynamicSubjectLineChart() {
                         data: line_data.DynamicSubject,
                     },
                 ]}
-                width={850}
                 height={500}
             />
-        </ChartContainer>)
+        </Grid>)
 }

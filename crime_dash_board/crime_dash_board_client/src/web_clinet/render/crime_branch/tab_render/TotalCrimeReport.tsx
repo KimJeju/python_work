@@ -1,4 +1,3 @@
-import styled from "styled-components"
 import { useRecoilValueLoadable } from "recoil"
 import { fetchCrimeBranchState } from "../../../state/crime_branch/CrimeBranchState"
 import SingDataBox from "../../../components/SingleDataBox";
@@ -32,24 +31,18 @@ const useStyles = makeStyles()(() => {
     left_chart_container : {
         display : "flex",
         justifyContent : "space-between",
+    },
+    right_chart_container : {
+        display : "flex",
+        marginLeft : "1vw",
     }
 };
 });
 
-const RightChartWrapper = styled.div`
-    display : flex;
-    flex-direction : column;
-
-
-    margin-top : 2vh;
-    margin-left : 1vw;
-
-`
-
 export type BindingDataType = {
     avg_title: string;
     data: string
-}
+};
 
 export default function TotalCrimeReport() {
 
@@ -80,10 +73,10 @@ export default function TotalCrimeReport() {
                     <ToTalCrimeBarCharts data={data} />
                 </Grid>
 
-                <RightChartWrapper>
+                <Grid container className={classes.right_chart_container}>
                     <SwarmPlotChart />
                     <DynamicSubjectLineChart />
-                </RightChartWrapper>
+                </Grid>
             </Grid>
         </Grid>
     )
