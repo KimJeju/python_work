@@ -1,7 +1,7 @@
 import axios from "axios";
 import { atom, selector } from "recoil";
 
-export const crimebranchState = atom<object>({
+export const crimebranchState = atom({
     key : "crime_branch",
     default : [],
 })

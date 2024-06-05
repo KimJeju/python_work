@@ -1,5 +1,4 @@
 import styled from "styled-components";
-
 import CrimeBranchTap from "./CrimeBranchTap";
 import SideNav from "../../globals/SideNav";
 import { crimeBranch_combo_select } from "../../constants/CrimeBranch";
@@ -8,12 +7,11 @@ import { useRecoilValue } from "recoil";
 import { comboboxState } from "../../state/global/ComboBoxState";
 import { selected_branch_crime_data } from "../../contexts/CrimeBranchContext";
 
+
 const Container = styled.div`
  width : calc(100% - 5vw);
  height : 100vh;
-//  background-color : red;
- 
- margin : 4%;
+ margin : 5.5%;
 `
 
 
@@ -28,7 +26,7 @@ export default function CrimeBranch() {
                 <SideNav />
                 <ComboBox  args={crimeBranch_combo_select} />
                 <button onClick={() => {selected_branch_crime_data(seletetedComboboxValue)}}>
-                    test
+                    test 
                 </button>
                 <CrimeBranchTap />
             </Container>

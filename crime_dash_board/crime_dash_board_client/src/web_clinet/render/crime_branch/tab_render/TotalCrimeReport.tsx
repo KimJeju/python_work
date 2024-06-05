@@ -6,15 +6,27 @@ import ToTalCrimeBarCharts from "../../../components/data_chart/ToTalCrimeBarCha
 import AverageSubjectPieChart from "../../../components/data_chart/AverageSubjectPieChart";
 import DynamicSubjectLineChart from "../../../components/data_chart/DynamicSubjectLineChart";
 import SwarmPlotChart from "../../../components/data_chart/SwarmPlotChart";
+import { Grid, Typography } from "@mui/material";
+import { makeStyles } from "tss-react/mui";
 
-const Wrapper = styled.div`
-    padding : 1%;
+const useStyles = makeStyles()(() => {
+    return {
+    root: {
+        padding : "15px",
+        display : "flex",
+        flexDirection: "column",
+        backgroundColor : "red"
+    },
+    data_title : {
+        fontSize : "2.2rem"
+    },
+    total_avg_container : {
+        display : "flex",
+        justifyContent : "space-between"
+    }
+};
+});
 
-    display :flex;
-    flex-direction : column;
-
-
-`
 
 const ChartContainer = styled.div`
     display : flex;
@@ -39,15 +51,6 @@ const RightChartWrapper = styled.div`
 
 `
 
-const TotalContent = styled.div`
-    display :flex;
-    justify-content : space-between;
-`
-
-const DataTitle = styled.p`
-    font-size : 32px;
-`
-
 export type BindingDataType = {
     avg_title: string;
     data: string
@@ -56,6 +59,7 @@ export type BindingDataType = {
 export default function TotalCrimeReport() {
 
     const data = useRecoilValueLoadable(fetchCrimeBranchState);
+    const {classes} = useStyles();
 
     if (data.state != "hasValue") {
         return;
@@ -64,15 +68,15 @@ export default function TotalCrimeReport() {
     const data_title: string = '총 계'
 
     return (
-        <Wrapper>
-            <DataTitle>{data_title}</DataTitle>
-            <TotalContent>
+        <Grid container xs={12} spacing={2} className={classes.root} >
+            <Typography className={classes.data_title}>{data_title}</Typography>
+            <Grid container spacing={2} className={classes.total_avg_container}>
                 {
                     Object.entries(data.contents.average['총 계']).map((el, index) => (
                         <SingDataBox key={index} data={el[1] as string} avg_title={el[0]} />
                     ))
                 }
-            </TotalContent>
+            </Grid>
 
             <ChartContainer>
                 <LeftChartWrapper>
@@ -85,7 +89,7 @@ export default function TotalCrimeReport() {
                     <DynamicSubjectLineChart />
                 </RightChartWrapper>
             </ChartContainer>
-        </Wrapper>
+        </Grid>
     )
 }
 
