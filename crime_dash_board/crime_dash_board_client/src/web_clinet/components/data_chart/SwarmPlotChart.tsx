@@ -28,7 +28,6 @@ export default function SwarmPlotChart() {
 
     const { classes } = useStyles();
     const subCategoryData = useRecoilValue(dynamicSubCategoryState);
-
     const tuple_data = get_swarm_chart_data_key_pair_value(subCategoryData);
 
     return (

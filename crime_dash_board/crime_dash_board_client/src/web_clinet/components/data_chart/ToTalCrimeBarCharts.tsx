@@ -1,11 +1,12 @@
 import { Loadable } from "recoil"
 import { BarChart } from '@mui/x-charts/BarChart';
 import { IBarChartData } from "../../Interfaces/IChartModel";
-import { chart_data_to_array, slice_total_avg_data } from "../../utils/ChartDataUtil";
+import { chart_data_to_array, slice_total_avg_data, slice_total_avg_data_test } from "../../utils/ChartDataUtil";
 
 import styled from "styled-components";
 import { Grid, Typography } from "@mui/material";
 import { makeStyles } from "tss-react/mui";
+import { ITotalData } from "../../Interfaces/ICrimeBranchModel";
 
 
 const useStyles = makeStyles()(() => {
@@ -34,10 +35,13 @@ const MiddleLine = styled.div`
     background-color : lightgrey;
 `
 
-export default function ToTalCrimeBarCharts({ data }: { data: Loadable<any> }) {
+export default function ToTalCrimeBarCharts({ data }: { data: ITotalData }) {
 
     const { classes } = useStyles();
-    const average = data.contents.average;
+
+    const average = data.average;
+
+    console.log(average);
 
     const ChartData: IBarChartData = {
         ViolentCrime: chart_data_to_array(average["강력범죄 (소계)"]),
@@ -51,40 +55,30 @@ export default function ToTalCrimeBarCharts({ data }: { data: Loadable<any> }) {
     ChartData.ForceCrime.shift();
     ChartData.MoralCrime.shift();
 
+    console.log(ChartData);
+
+
     //데이터 쪼개기
-    const [violent_main, violent_sub] = slice_total_avg_data(ChartData.ViolentCrime);
-    const [criminal_master_mind_main, criminal_master_mind_sub] = slice_total_avg_data(ChartData.CriminalMastermind);
-    const [force_crime_main, force_crime_main_sub] = slice_total_avg_data(ChartData.ForceCrime);
-    const [moral_crime_main, moral_crime_sub] = slice_total_avg_data(ChartData.MoralCrime);
+    const violent_sub = slice_total_avg_data_test(ChartData.ViolentCrime);
+    const criminal_master_mind_sub  = slice_total_avg_data_test(ChartData.CriminalMastermind);
+    const force_crime_main_sub = slice_total_avg_data_test(ChartData.ForceCrime);
+    const moral_crime_sub = slice_total_avg_data_test(ChartData.MoralCrime);
+
 
 
     return (
         <Grid container className={classes.root}>
             <Typography>분류별 통계</Typography>
             <BarChart
-                xAxis={[{ scaleType: 'band', data: ['검거 건수', '검거인원'] }]}
+                xAxis={[{ scaleType: 'band', data: ['검거 건수', "발생대비 검거율 (%)", '검거인원'] }]}
                 series={[
-                    { data: violent_main, label: "강력 범죄 (소계)" },
-                    { data: criminal_master_mind_main, label: '지능 범죄 (소계)' },
-                    { data: force_crime_main, label: '폭력 범죄 (소계)' },
-                    { data: moral_crime_main, label: '풍속 범죄 (소계)' },
+                    { data: violent_sub, label: "강력 범죄 (소계)" },
+                    { data: criminal_master_mind_sub, label: '지능 범죄 (소계)' },
+                    { data: force_crime_main_sub, label: '폭력 범죄 (소계)' },
+                    { data: moral_crime_sub, label: '풍속 범죄 (소계)' },
                 ]}
                 // width={850}
-                height={280}
-                layout="vertical"
-                grid={{ vertical: true }}
-            />
-            <MiddleLine />
-            <BarChart
-                xAxis={[{ scaleType: 'band', data: ['발생대비 검거건수(%)', '법인체'] }]}
-                series={[
-                    { data: violent_sub, },
-                    { data: criminal_master_mind_sub },
-                    { data: force_crime_main_sub },
-                    { data: moral_crime_sub },
-                ]}
-                // width={850}
-                height={280}
+                height={500}
                 layout="vertical"
                 grid={{ vertical: true }}
             />

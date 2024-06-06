@@ -1,11 +1,10 @@
 
-import { useRecoilValue } from "recoil"
-import { subjectAverageState } from "../../state/crime_branch/SubjectAverageState"
 import { IPieChartData } from "../../Interfaces/IChartModel";
 import { chart_data_columns_to_array, chart_data_to_array } from "../../utils/ChartDataUtil";
 import { PieChart } from "@mui/x-charts";
 import { Grid, Typography } from "@mui/material";
 import { makeStyles } from "tss-react/mui";
+import { IArgumentType } from "../../Interfaces/IPropsModel";
 const useStyles = makeStyles()(() => {
   return {
     root: {
@@ -25,20 +24,19 @@ const useStyles = makeStyles()(() => {
   };
 });
 
-export default function AverageSubjectPieChart() {
+export default function AverageSubjectPieChart({data} : {data : IArgumentType}) {
 
   const { classes } = useStyles();
-  const data = useRecoilValue(subjectAverageState);
 
   const pie_data: IPieChartData = {
-    AverageSubject: chart_data_to_array(data)
+    AverageSubject: chart_data_to_array(data.args)
   }
 
-  const column_array = chart_data_columns_to_array(data);
+  const column_array = chart_data_columns_to_array(data.args);
 
   return (
       <Grid item xs={5.7}  className={classes.root}>
-      <Typography>범죄 분류별 발생건수 (건)</Typography>
+      <Typography>{data.key}</Typography>
       <PieChart
         series={[
           {

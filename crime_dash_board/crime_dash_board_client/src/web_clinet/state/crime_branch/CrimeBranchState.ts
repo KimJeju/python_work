@@ -1,20 +1,8 @@
-import axios from "axios";
-import { atom, selector } from "recoil";
+import { atom } from "recoil";
+import { ITotalData } from "../../Interfaces/ICrimeBranchModel";
 
-export const crimebranchState = atom({
+export const totalCrimebranchState = atom<object | any>({
     key : "crime_branch",
-    default : [],
+    default : []
 })
 
-export const fetchCrimeBranchState = selector({
-    key : "fetch_crime_branch",
-    get : async () => {
-        const ack = await axios.get(
-            "http://localhost:8892/crime_branch"
-        );
-
-        const data = ack.data
-
-        return data;
-    }
-})
