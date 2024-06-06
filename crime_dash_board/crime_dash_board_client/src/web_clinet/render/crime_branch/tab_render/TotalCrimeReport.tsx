@@ -10,33 +10,33 @@ import { makeStyles } from "tss-react/mui";
 
 const useStyles = makeStyles()(() => {
     return {
-    root: {
-        padding : "15px",
-        display : "flex",
-        flexDirection: "column",
-    },
-    data_title : {
-        fontSize : "2.2rem",
-        marginBottom : "1vh"
-    },
-    total_avg_container : {
-        display : "flex",
-        justifyContent : "space-between"
-    },
-    chart_container : {
-        display : "flex",
-        flexDirection : "row",
-        marginTop : "2vh",
-    },
-    left_chart_container : {
-        display : "flex",
-        justifyContent : "space-between",
-    },
-    right_chart_container : {
-        display : "flex",
-        marginLeft : "1vw",
-    }
-};
+        root: {
+            padding: "15px",
+            display: "flex",
+            flexDirection: "column",
+        },
+        data_title: {
+            fontSize: "2.2rem",
+            marginBottom: "1vh"
+        },
+        total_avg_container: {
+            display: "flex",
+            justifyContent: "space-between"
+        },
+        chart_container: {
+            display: "flex",
+            flexDirection: "row",
+            marginTop: "2vh",
+        },
+        left_chart_container: {
+            display: "flex",
+            justifyContent: "space-between",
+        },
+        right_chart_container: {
+            display: "flex",
+            marginLeft: "1vw",
+        }
+    };
 });
 
 export type BindingDataType = {
@@ -46,8 +46,11 @@ export type BindingDataType = {
 
 export default function TotalCrimeReport() {
 
+    const branch_data = useBranchCrime();
+
+
     const data = useRecoilValueLoadable(fetchCrimeBranchState);
-    const {classes} = useStyles();
+    const { classes } = useStyles();
 
     if (data.state != "hasValue") {
         return;
@@ -55,30 +58,37 @@ export default function TotalCrimeReport() {
 
     const data_title: string = '총 계'
 
-    return (
-        <Grid container xs={12} spacing={2} className={classes.root} >
-            <Typography className={classes.data_title}>{data_title}</Typography>
-            <Grid container spacing={2} className={classes.total_avg_container}>
-                {
-                    Object.entries(data.contents.average['총 계']).map((el, index) => (
-                        <SingDataBox key={index} data={el[1] as string} avg_title={el[0]} />
-                    ))
-                }
-            </Grid>
+    if (branch_data.isLoading == false) {
+        
+        const using_data = swr_data_to_key_pair_value(branch_data.data);
 
-            <Grid xs={12} className={classes.chart_container}>
-                <Grid container className={classes.left_chart_container}>
-                    <AverageSubjectPieChart />
-                    <AverageSubjectPieChart />
-                    <ToTalCrimeBarCharts data={data} />
+        console.log(using_data[0]["average"]['총 계']);
+
+        return (
+            <Grid container xs={12} spacing={2} className={classes.root} >
+                <Typography className={classes.data_title}>{data_title}</Typography>
+                <Grid container spacing={2} className={classes.total_avg_container}>
+                    {
+                        Object.entries(branch_data.data.average['총 계']).map((el, index) => (
+                            <SingDataBox key={index} data={el[1] as string} avg_title={el[0]} />
+                        ))
+                    }
                 </Grid>
 
-                <Grid container className={classes.right_chart_container}>
-                    <SwarmPlotChart />
-                    <DynamicSubjectLineChart />
+                <Grid xs={12} className={classes.chart_container}>
+                    <Grid container className={classes.left_chart_container}>
+                        <AverageSubjectPieChart />
+                        <AverageSubjectPieChart />
+                        <ToTalCrimeBarCharts data={data} />
+                    </Grid>
+
+                    <Grid container className={classes.right_chart_container}>
+                        <SwarmPlotChart />
+                        <DynamicSubjectLineChart />
+                    </Grid>
                 </Grid>
             </Grid>
-        </Grid>
-    )
+        )
+    }
 }
 
