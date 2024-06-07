@@ -66,6 +66,8 @@ export default function TotalCrimeReport() {
     useMemo(() => {
         async function get_all_default_data() {
             const default_data = await default_data_on_load();
+
+            console.log(default_data);
             if (default_data != undefined) {
                 setTotalData({
                     average: default_data[0].average,
@@ -81,8 +83,13 @@ export default function TotalCrimeReport() {
         get_all_default_data();
     }, [])
 
-
     //즉각적인 데이터 변동이 어려운 차트에 대하여 값을 직접 대입해준다.
+
+    const total_data_args : IArgumentType = {
+        key : "종합 총계",
+        args : useRecoilValue(totalCrimebranchState)
+    }
+
     const sub_catetory_args : IArgumentType = {
         key : "소분류 범죄 발생비율 (%)",
         args : useRecoilValue(dynamicSubCategoryState)
@@ -98,7 +105,7 @@ export default function TotalCrimeReport() {
         args : useRecoilValue(arrestAverageState)
     } 
 
-    console.log(sub_catetory_args);
+    console.log(total_data_args.args.average);
 
     if (totalData.average == undefined || totalData.average == null) {
         return <></>
@@ -118,7 +125,7 @@ export default function TotalCrimeReport() {
                     <Grid container className={classes.left_chart_container}>
                         <AverageSubjectPieChart data={occucrrences_args}/>
                         <AverageSubjectPieChart data={arrest_args}/>
-                        <ToTalCrimeBarCharts data={totalData} />
+                        <ToTalCrimeBarCharts data={total_data_args} />
                     </Grid>
                     <Grid container className={classes.right_chart_container}>
                         <SwarmPlotChart  data={sub_catetory_args}/>

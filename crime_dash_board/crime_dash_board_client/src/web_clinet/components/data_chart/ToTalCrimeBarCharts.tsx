@@ -4,6 +4,7 @@ import { chart_data_to_array, slice_total_avg_data } from "../../utils/ChartData
 import { Grid, Typography } from "@mui/material";
 import { ITotalData } from "../../Interfaces/ICrimeBranchModel";
 import { makeStyles } from "tss-react/mui";
+import { IArgumentType } from '../../Interfaces/IPropsModel';
 const useStyles = makeStyles()(() => {
     return {
         root: {
@@ -22,17 +23,15 @@ const useStyles = makeStyles()(() => {
     };
 });
 
-export default function ToTalCrimeBarCharts({ data }: { data: ITotalData }) {
+export default function ToTalCrimeBarCharts({ data }: { data: IArgumentType }) {
 
     const { classes } = useStyles();
 
-    const average = data.average;
-
     const ChartData: IMainChartData = {
-        ViolentCrime: chart_data_to_array(average["강력범죄 (소계)"]),
-        CriminalMastermind: chart_data_to_array(average["지능범죄 (소계)"]),
-        ForceCrime: chart_data_to_array(average["폭력범죄 (소계)"]),
-        MoralCrime: chart_data_to_array(average["풍속범죄 (소계)"]),
+        ViolentCrime: chart_data_to_array(data.args.average["강력범죄 (소계)"]),
+        CriminalMastermind: chart_data_to_array(data.args.average["지능범죄 (소계)"]),
+        ForceCrime: chart_data_to_array(data.args.average["폭력범죄 (소계)"]),
+        MoralCrime: chart_data_to_array(data.args.average["풍속범죄 (소계)"]),
     }
 
     ChartData.ViolentCrime.shift();

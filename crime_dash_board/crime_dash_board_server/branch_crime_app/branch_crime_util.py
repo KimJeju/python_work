@@ -18,7 +18,7 @@ def get_default_crime_branch_data():
         print(FileNotFoundError)   
         return "FILE NOT FOUND"
 
-# 페이지 로딩 시 사용될 디폴트 메서드
+# 페이지 로딩 시 사용될 디폴트 메서드 아규먼트 추가
 def get_selected_crime_branch_data(year:str, branch:int ):
     category = ['average','main', 'sub']
     dict_data = {}
@@ -54,20 +54,6 @@ def get_categorize_crime_branch(year:str, branch:int, category:str):
         print(FileNotFoundError)    
         return "FILE NOT FOUND"
 
-#프론트엔드 랜더링 시 기본으로 가져올 함수
-def get_default_average_subject_crime_data(category:str,select_data : str):
-    try:
-       csv_data = pd.read_csv(f'./templates/crime_data/branch/2024/{category}/crime_report_branch_1_2024_{category}_crime_data.csv')
-       df = pd.DataFrame(csv_data)
-       df = sort_crime_data(df)
-       
-       diff_df = df[df.columns.difference(["총 계"])] #총계 제외
-       
-       subject_data = diff_df.loc[select_data]
-       return subject_data
-    except Exception:
-        print(Exception)
-        
 def get_dynamic_subject_crime_data(year:str, branch:int, category:str, subject:str):    
     dict_data = {}
     try:

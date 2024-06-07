@@ -20,9 +20,7 @@ export default function BranchOnChangeBtn() {
 
     async function onChangeCrimeBranch() {
         try {
-            const seleted_data = await seleted_data_on_load(seletetedComboboxValue.year.toString(), seletetedComboboxValue.branch);
-
-            console.log(seleted_data);
+            const seleted_data = await seleted_data_on_load(seletetedComboboxValue.year.toString(), seletetedComboboxValue.branch, "average");
             if (seleted_data != undefined) {
                 setTotalData({
                     average: seleted_data[0].average,
