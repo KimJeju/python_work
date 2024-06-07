@@ -48,9 +48,9 @@ export default function ToTalCrimeBarCharts({ data }: { data: ITotalData }) {
 
     return (
         <Grid container className={classes.root}>
-            <Typography>분류별 통계</Typography>
+            <Typography>대분류 소주제별 세부 통계</Typography>
             <BarChart
-                xAxis={[{ scaleType: 'band', data: ['검거 건수', "발생대비 검거율 (%)", '검거인원'] }]}
+                xAxis={[{ scaleType: 'band', data: ['발생대비 검거율 (%)', "검거인원", '법인체'] }]}
                 series={[
                     { data: violent_sub, label: "강력 범죄 (소계)" },
                     { data: criminal_master_mind_sub, label: '지능 범죄 (소계)' },

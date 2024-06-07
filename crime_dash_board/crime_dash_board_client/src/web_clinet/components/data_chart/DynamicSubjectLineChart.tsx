@@ -49,8 +49,6 @@ export default function DynamicSubjectLineChart() {
         MoralCrime: line_chart_data_slice(line_data_list, 3),
     }
 
-    console.log(chart_data)
-
     return (
         <Grid xs={16} className={classes.root}>
             <Typography>2023 분기별 범죄발생 추이</Typography>

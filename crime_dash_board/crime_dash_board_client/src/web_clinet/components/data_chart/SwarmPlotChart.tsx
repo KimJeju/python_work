@@ -4,6 +4,7 @@ import { dynamicSubCategoryState } from '../../state/crime_branch/DynamicSubject
 import { get_swarm_chart_data_key_pair_value } from '../../utils/ChartDataUtil'
 import { Grid, Typography } from '@mui/material'
 import { makeStyles } from 'tss-react/mui'
+import { IArgumentType } from '../../Interfaces/IPropsModel'
 
 const useStyles = makeStyles()(() => {
     return {
@@ -24,15 +25,14 @@ const useStyles = makeStyles()(() => {
     };
 });
 
-export default function SwarmPlotChart() {
+export default function SwarmPlotChart({data}: {data: IArgumentType}) {
 
     const { classes } = useStyles();
-    const subCategoryData = useRecoilValue(dynamicSubCategoryState);
-    const tuple_data = get_swarm_chart_data_key_pair_value(subCategoryData);
+    const tuple_data = get_swarm_chart_data_key_pair_value(data.args);
 
     return (
         <Grid item xs={12} className={classes.root}>
-            <Typography>소분류 범죄 발생비율 (%)</Typography>
+            <Typography>{data.key}</Typography>
             <ResponsiveCirclePackingCanvas
                 data={tuple_data}
                 margin={{ top: 5, right: 20, bottom: 20, left: 20 }}

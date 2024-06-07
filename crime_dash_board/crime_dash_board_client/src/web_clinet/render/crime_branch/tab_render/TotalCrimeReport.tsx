@@ -4,7 +4,7 @@ import { makeStyles } from "tss-react/mui";
 import { arrestAverageState, occurrencesAverageState } from "../../../state/crime_branch/SubjectAverageState";
 import { dynamicSubCategoryState } from "../../../state/crime_branch/DynamicSubjectState";
 import { useMemo } from "react";
-import { default_data_on_load} from "../../../contexts/context/CrimeBranchContext";
+import { default_data_on_load} from "../../../contexts/CrimeBranchContext";
 import { crimeBranchTransitionState, totalCrimebranchState } from "../../../state/crime_branch/CrimeBranchState";
 import { IArgumentType } from "../../../Interfaces/IPropsModel";
 
@@ -52,17 +52,15 @@ export type BindingDataType = {
 };
 
 export default function TotalCrimeReport() {
-
-
     const { classes } = useStyles();
 
     const data_title: string = '총 계'
 
-    const [totalData, setTotalData] = useRecoilState(totalCrimebranchState);
-    const [branchTransitiom, setBranchTransition] = useRecoilState(crimeBranchTransitionState);
-    const [subCrimeData, setSubCrimeData] = useRecoilState(dynamicSubCategoryState);
-    const [avgOccurrencesData, setAvgOccurencesData] = useRecoilState(occurrencesAverageState);
-    const [avgArrestData, setAvgArrestData] = useRecoilState(arrestAverageState);
+    const [totalData, setTotalData] = useRecoilState(totalCrimebranchState); // main, sub, average 
+    const [branchTransitiom, setBranchTransition] = useRecoilState(crimeBranchTransitionState); // 2023 분기별 범죄 발생추이
+    const [subCrimeData, setSubCrimeData] = useRecoilState(dynamicSubCategoryState); // 소분류데이터
+    const [avgOccurrencesData, setAvgOccurencesData] = useRecoilState(occurrencesAverageState); // 중분류 범죄발생추이
+    const [avgArrestData, setAvgArrestData] = useRecoilState(arrestAverageState); // 중분류 검거건 추이
     // const [subCategoryData, setSubCategoryData] = useRecoilState(dynamicSubCategoryState);
 
     useMemo(() => {
@@ -83,6 +81,13 @@ export default function TotalCrimeReport() {
         get_all_default_data();
     }, [])
 
+
+    //즉각적인 데이터 변동이 어려운 차트에 대하여 값을 직접 대입해준다.
+    const sub_catetory_args : IArgumentType = {
+        key : "소분류 범죄 발생비율 (%)",
+        args : useRecoilValue(dynamicSubCategoryState)
+    }
+
     const occucrrences_args : IArgumentType = {
         key : "대분류 범죄 발생건수 (건)",
         args : useRecoilValue(occurrencesAverageState)
@@ -93,7 +98,7 @@ export default function TotalCrimeReport() {
         args : useRecoilValue(arrestAverageState)
     } 
 
-  
+    console.log(sub_catetory_args);
 
     if (totalData.average == undefined || totalData.average == null) {
         return <></>
@@ -115,9 +120,8 @@ export default function TotalCrimeReport() {
                         <AverageSubjectPieChart data={arrest_args}/>
                         <ToTalCrimeBarCharts data={totalData} />
                     </Grid>
-
                     <Grid container className={classes.right_chart_container}>
-                        <SwarmPlotChart />
+                        <SwarmPlotChart  data={sub_catetory_args}/>
                         <DynamicSubjectLineChart />
                     </Grid>
                 </Grid>
