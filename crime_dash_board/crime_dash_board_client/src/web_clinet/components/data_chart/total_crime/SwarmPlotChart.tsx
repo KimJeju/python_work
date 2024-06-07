@@ -1,6 +1,4 @@
 import { ResponsiveCirclePackingCanvas } from '@nivo/circle-packing'
-import { useRecoilValue } from 'recoil'
-import { dynamicSubCategoryState } from '../../../state/crime_branch/total/DynamicSubjectState'
 import { get_swarm_chart_data_key_pair_value } from '../../../utils/ChartDataUtil'
 import { Grid, Typography } from '@mui/material'
 import { makeStyles } from 'tss-react/mui'

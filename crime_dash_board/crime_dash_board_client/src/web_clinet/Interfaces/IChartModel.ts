@@ -23,6 +23,16 @@ export interface ISwarmPlotDataList {
     "children" : ISwarmPlotData[];
 }
 
+export interface ITreeMapData {
+    x : string,
+    y : number
+ }
+
+export interface ITreeMapDataList {
+    data : ITreeMapData[]
+ }
+
+
 
 export interface IDictData {
     [key : string ]:number;

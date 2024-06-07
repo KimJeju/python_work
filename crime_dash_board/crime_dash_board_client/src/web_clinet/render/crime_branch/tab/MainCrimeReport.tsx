@@ -6,7 +6,7 @@ import { mainDataArrestPeopleState, mainDataArrestPersentState, mainDataArrestSt
 import { get_dynamic_subject_data } from "../../../contexts/CrimeBranchContext";
 import { useMemo } from "react";
 import MainSubjectPieChart from "../../../components/data_chart/main_crime/MainSubjectPieChart";
-import SwarmPlotChart from "../../../components/data_chart/total_crime/SwarmPlotChart";
+import { MainTreeMap } from "../../../components/data_chart/main_crime/MainTreeMap";
 
 const useStyle = makeStyles()(() => {
     return {
@@ -18,6 +18,9 @@ const useStyle = makeStyles()(() => {
         main_pie_container: {
             display: "flex",
             justifyContent: "space-between"
+        },
+        main_tree_map_container: {
+            marginTop : "3vh"
         },
     }
 })
@@ -83,7 +86,9 @@ export default function MainCrimeReport() {
                 {/* <MainSubjectPieChart data={occurence_args} /> */}
             </Grid>
 
-            <SwarmPlotChart data={occurence_args} />
+            <Grid item xs={6} className={classes.main_tree_map_container} >
+                <MainTreeMap data={arrest_persent_args} />
+            </Grid>
         </Grid>
     )
 }

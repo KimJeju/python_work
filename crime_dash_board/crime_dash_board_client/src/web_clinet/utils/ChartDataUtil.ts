@@ -1,4 +1,4 @@
-import { ILineChartData, ISwarmPlotData, ISwarmPlotDataList } from "../interfaces/IChartModel";
+import { ILineChartData, ISwarmPlotData, ISwarmPlotDataList, ITreeMapData, ITreeMapDataList } from "../interfaces/IChartModel";
 
 
 export function chart_data_to_array(data: object): Array<number> {
@@ -65,5 +65,23 @@ export function line_chart_data_slice(data : ILineChartData[], index : number){
         }
         branch++;
     }
+    return result_list;
+}
+
+
+export function get_tree_map_data_set(data:object){
+    const result_list : ITreeMapDataList = {
+        data : []
+    };
+
+    Object.entries(data).map((value,index) => {
+        const result : ITreeMapData = {
+            x : value[0],
+            y : value[1],
+        }
+
+        result_list.data.push(result);
+    })
+
     return result_list;
 }
