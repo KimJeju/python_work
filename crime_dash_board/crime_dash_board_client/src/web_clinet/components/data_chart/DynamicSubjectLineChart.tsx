@@ -1,11 +1,10 @@
-import styled from "styled-components";
 import { useRecoilValue } from "recoil"
-import { dynamicSubjectState } from "../../state/crime_branch/DynamicSubjectState"
-import { ILineChartData } from "../../Interfaces/IChartModel";
-import { chart_data_columns_to_array, chart_data_to_array } from "../../utils/ChartDataUtil";
-import { LineChart } from "@mui/x-charts";
+import { ILineChartData, IMainChartData } from "../../Interfaces/IChartModel";
+import { chart_data_columns_to_array, chart_data_to_array, line_chart_data_slice } from "../../utils/ChartDataUtil";
 import { makeStyles } from "tss-react/mui";
-import { Grid } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
+import { crimeBranchTransitionState } from "../../state/crime_branch/CrimeBranchState";
+import { LineChart } from "@mui/x-charts";
 
 
 const useStyles = makeStyles()(() => {
@@ -26,30 +25,48 @@ const useStyles = makeStyles()(() => {
     };
 });
 
-
 export default function DynamicSubjectLineChart() {
 
     const { classes } = useStyles();
-    const data = useRecoilValue(dynamicSubjectState);
+    const data = useRecoilValue(crimeBranchTransitionState);
 
-    const line_data: ILineChartData = {
-        DynamicSubjectColums: chart_data_columns_to_array(data),
-        DynamicSubject: chart_data_to_array(data)
+    const using_subject = data as any
+
+    const column_list = chart_data_columns_to_array(using_subject);
+    const line_data_list: ILineChartData[] = [];
+
+    Object.entries(data).map((el) => {
+        const line_data: ILineChartData = {
+            [el[0]]: chart_data_to_array(el[1])
+        }
+        line_data_list.push(line_data);
+    })
+
+    const chart_data: IMainChartData = {
+        ViolentCrime: line_chart_data_slice(line_data_list, 0),
+        ForceCrime: line_chart_data_slice(line_data_list, 1),
+        CriminalMastermind: line_chart_data_slice(line_data_list, 2),
+        MoralCrime: line_chart_data_slice(line_data_list, 3),
     }
+
+    console.log(chart_data)
 
     return (
         <Grid xs={16} className={classes.root}>
+            <Typography>2023 분기별 범죄발생 추이</Typography>
             <LineChart
-                xAxis={[{ scaleType: 'point', data: line_data.DynamicSubjectColums }]}
-                series={[
-                    {
-                        label: '주제별 범죄발생 통계 (건)',
-                        area: true,
-                        showMark: false,
-                        data: line_data.DynamicSubject,
-                    },
-                ]}
+                width={800}
                 height={500}
+                series={[
+                    { data: chart_data.ViolentCrime, label: '강력범죄', yAxisKey: 'leftAxisId' },
+                    { data: chart_data.ForceCrime, label: '폭력범죄', yAxisKey: 'rightAxisId' },
+                    { data: chart_data.CriminalMastermind, label: '지능범죄', yAxisKey: 'rightAxisId' },
+                    { data: chart_data.MoralCrime, label: '풍속범죄', yAxisKey: 'rightAxisId' },
+
+                ]}
+                xAxis={[{ scaleType: 'point', data: column_list }]}
+                yAxis={[{ id: 'leftAxisId' }, { id: 'rightAxisId' }]}
+                rightAxis="rightAxisId"
             />
         </Grid>)
 }

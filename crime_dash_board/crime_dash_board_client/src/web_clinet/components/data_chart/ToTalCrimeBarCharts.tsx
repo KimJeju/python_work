@@ -1,14 +1,9 @@
-import { Loadable } from "recoil"
 import { BarChart } from '@mui/x-charts/BarChart';
-import { IBarChartData } from "../../Interfaces/IChartModel";
-import { chart_data_to_array, slice_total_avg_data, slice_total_avg_data_test } from "../../utils/ChartDataUtil";
-
-import styled from "styled-components";
+import { IMainChartData } from "../../Interfaces/IChartModel";
+import { chart_data_to_array, slice_total_avg_data } from "../../utils/ChartDataUtil";
 import { Grid, Typography } from "@mui/material";
-import { makeStyles } from "tss-react/mui";
 import { ITotalData } from "../../Interfaces/ICrimeBranchModel";
-
-
+import { makeStyles } from "tss-react/mui";
 const useStyles = makeStyles()(() => {
     return {
         root: {
@@ -27,23 +22,13 @@ const useStyles = makeStyles()(() => {
     };
 });
 
-const MiddleLine = styled.div`
-    width : calc(85%);
-    height : 1px;
-
-    transition : 0.2s;
-    background-color : lightgrey;
-`
-
 export default function ToTalCrimeBarCharts({ data }: { data: ITotalData }) {
 
     const { classes } = useStyles();
 
     const average = data.average;
 
-    console.log(average);
-
-    const ChartData: IBarChartData = {
+    const ChartData: IMainChartData = {
         ViolentCrime: chart_data_to_array(average["강력범죄 (소계)"]),
         CriminalMastermind: chart_data_to_array(average["지능범죄 (소계)"]),
         ForceCrime: chart_data_to_array(average["폭력범죄 (소계)"]),
@@ -55,16 +40,11 @@ export default function ToTalCrimeBarCharts({ data }: { data: ITotalData }) {
     ChartData.ForceCrime.shift();
     ChartData.MoralCrime.shift();
 
-    console.log(ChartData);
-
-
     //데이터 쪼개기
-    const violent_sub = slice_total_avg_data_test(ChartData.ViolentCrime);
-    const criminal_master_mind_sub  = slice_total_avg_data_test(ChartData.CriminalMastermind);
-    const force_crime_main_sub = slice_total_avg_data_test(ChartData.ForceCrime);
-    const moral_crime_sub = slice_total_avg_data_test(ChartData.MoralCrime);
-
-
+    const violent_sub = slice_total_avg_data(ChartData.ViolentCrime);
+    const criminal_master_mind_sub  = slice_total_avg_data(ChartData.CriminalMastermind);
+    const force_crime_main_sub = slice_total_avg_data(ChartData.ForceCrime);
+    const moral_crime_sub = slice_total_avg_data(ChartData.MoralCrime);
 
     return (
         <Grid container className={classes.root}>

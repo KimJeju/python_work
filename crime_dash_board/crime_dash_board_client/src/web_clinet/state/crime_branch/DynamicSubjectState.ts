@@ -10,3 +10,4 @@ export const dynamicSubCategoryState = atom({
     key : "dynamic_sub_category",
     default : []
 })
+

@@ -1,5 +1,5 @@
 
-export interface IBarChartData {
+export interface IMainChartData {
     ViolentCrime: number[];
     CriminalMastermind: number[];
     ForceCrime: number[];
@@ -11,15 +11,13 @@ export interface IPieChartData {
 }
 
 export interface ILineChartData {
-    DynamicSubjectColums : string [];
-    DynamicSubject : number [];
+    [key : string] : number[];
 }
 
 export interface ISwarmPlotData {
     "name" : string;
     "value" : number;
 }
-
 
 export interface ISwarmPlotDataList {
     "children" : ISwarmPlotData[];

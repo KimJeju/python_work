@@ -19,7 +19,7 @@ def get_default_crime_branch_data():
         return "FILE NOT FOUND"
 
 # 페이지 로딩 시 사용될 디폴트 메서드
-def get_selected_crime_branch_data(year:int, branch:int ):
+def get_selected_crime_branch_data(year:str, branch:int ):
     category = ['average','main', 'sub']
     dict_data = {}
     try:

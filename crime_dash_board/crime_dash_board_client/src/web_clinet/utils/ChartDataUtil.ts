@@ -1,4 +1,4 @@
-import { ISwarmPlotData, ISwarmPlotDataList } from "../Interfaces/IChartModel";
+import { ILineChartData, ISwarmPlotData, ISwarmPlotDataList } from "../Interfaces/IChartModel";
 
 
 export function chart_data_to_array(data: object): Array<number> {
@@ -43,28 +43,8 @@ export function get_swarm_chart_data_key_pair_value(data:object){
      return swarm_list;
 }
 
-export function slice_total_avg_data(data:number[]) : [number[], number[]]{
-    let iter = 0;
 
-    console.log(data);
-
-    const main_data : number[] = [];
-    const sub_data : number[] = [];
-
-
-    data.forEach(el => {
-        if(iter % 2 == 0){
-            main_data.push(data[iter]);
-        }else {
-            sub_data.push(data[iter]);
-        }
-        ++iter;
-    })
-
-    return [main_data, sub_data]
-}
-
-export function slice_total_avg_data_test(data:number[]): number[]{
+export function slice_total_avg_data(data:number[]): number[]{
 
     const sub_bar_data : number[] = []
 
@@ -73,4 +53,17 @@ export function slice_total_avg_data_test(data:number[]): number[]{
     }
 
     return sub_bar_data;
+}
+
+export function line_chart_data_slice(data : ILineChartData[], index : number){
+    let branch : number = 1;
+    const result_list : number[] = [] 
+    for(let i = 0; i < data.length; ++i){
+        if(data[i][branch +"분기"][branch] != undefined){
+            let result = data[i][branch+"분기"][index];
+            result_list.push(result);
+        }
+        branch++;
+    }
+    return result_list;
 }

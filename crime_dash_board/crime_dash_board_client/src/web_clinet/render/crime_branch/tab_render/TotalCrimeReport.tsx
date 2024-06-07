@@ -1,17 +1,19 @@
-import { useRecoilState, useRecoilValue, useRecoilValueLoadable } from "recoil"
+import { useRecoilState, useRecoilValue } from "recoil"
+import { Grid, Typography } from "@mui/material";
+import { makeStyles } from "tss-react/mui";
+import { arrestAverageState, occurrencesAverageState } from "../../../state/crime_branch/SubjectAverageState";
+import { dynamicSubCategoryState } from "../../../state/crime_branch/DynamicSubjectState";
+import { useMemo } from "react";
+import { default_data_on_load} from "../../../contexts/context/CrimeBranchContext";
+import { crimeBranchTransitionState, totalCrimebranchState } from "../../../state/crime_branch/CrimeBranchState";
+import { IArgumentType } from "../../../Interfaces/IPropsModel";
+
+//components
 import SingDataBox from "../../../components/SingleDataBox";
 import ToTalCrimeBarCharts from "../../../components/data_chart/ToTalCrimeBarCharts";
 import AverageSubjectPieChart from "../../../components/data_chart/AverageSubjectPieChart";
 import DynamicSubjectLineChart from "../../../components/data_chart/DynamicSubjectLineChart";
 import SwarmPlotChart from "../../../components/data_chart/SwarmPlotChart";
-import { Grid, Typography } from "@mui/material";
-import { makeStyles } from "tss-react/mui";
-import { arrestAverageState, occurrencesAverageState } from "../../../state/crime_branch/SubjectAverageState";
-import { dynamicSubCategoryState, dynamicSubjectState } from "../../../state/crime_branch/DynamicSubjectState";
-import { useMemo } from "react";
-import { default_data_on_load, get_average_subject_data, get_dynamic_subject_data, total_crime_branch_data } from "../../../contexts/context/CrimeBranchContext";
-import { totalCrimebranchState } from "../../../state/crime_branch/CrimeBranchState";
-import { IArgumentType } from "../../../Interfaces/IPropsModel";
 
 const useStyles = makeStyles()(() => {
     return {
@@ -57,10 +59,10 @@ export default function TotalCrimeReport() {
     const data_title: string = '총 계'
 
     const [totalData, setTotalData] = useRecoilState(totalCrimebranchState);
+    const [branchTransitiom, setBranchTransition] = useRecoilState(crimeBranchTransitionState);
+    const [subCrimeData, setSubCrimeData] = useRecoilState(dynamicSubCategoryState);
     const [avgOccurrencesData, setAvgOccurencesData] = useRecoilState(occurrencesAverageState);
     const [avgArrestData, setAvgArrestData] = useRecoilState(arrestAverageState);
-    const [mainCrimeData, setMainCrimeData] = useRecoilState(dynamicSubjectState)
-    const [subCrimeData, setSubCrimeData] = useRecoilState(dynamicSubCategoryState);
     // const [subCategoryData, setSubCategoryData] = useRecoilState(dynamicSubCategoryState);
 
     useMemo(() => {
@@ -72,7 +74,7 @@ export default function TotalCrimeReport() {
                     main: default_data[0].main,
                     sub: default_data[0].sub
                 })
-                setMainCrimeData(default_data[1]);
+                setBranchTransition(default_data[1]);
                 setSubCrimeData(default_data[2]);
                 setAvgOccurencesData(default_data[3]);
                 setAvgArrestData(default_data[4]);
