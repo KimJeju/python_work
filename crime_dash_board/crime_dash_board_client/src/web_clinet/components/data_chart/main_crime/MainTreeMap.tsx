@@ -36,7 +36,7 @@ export function MainTreeMap({ data }: { data: IArgumentType }) {
                 ]}
                 options={{
                     legend: {
-                        show: false
+                        show: true
                     },
                     chart: {
                         height: 650,

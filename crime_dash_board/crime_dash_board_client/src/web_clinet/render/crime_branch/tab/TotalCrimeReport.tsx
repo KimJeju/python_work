@@ -54,8 +54,6 @@ export type BindingDataType = {
 export default function TotalCrimeReport() {
     const { classes } = useStyles();
 
-    const data_title: string = '총 계'
-
     const [, setTotalData] = useRecoilState(totalCrimebranchState); // main, sub, average 
     const [, setBranchTransition] = useRecoilState(crimeBranchTransitionState); // 2023 분기별 범죄 발생추이
     const [, setSubCrimeData] = useRecoilState(dynamicSubCategoryState); // 소분류데이터
@@ -104,6 +102,7 @@ export default function TotalCrimeReport() {
         key : "대분류 범죄 검거건수 (건)",
         args : useRecoilValue(arrestAverageState)
     } 
+
 
     if (loading == true) {
         return <></>

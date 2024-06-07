@@ -71,9 +71,7 @@ def get_dynamic_subject_crime_data(year:str, branch:int, category:str, subject:s
     except Exception:
         print(Exception)
         
-def get_all_total_branch_number_of_occurrences():
-    year = [2024]
-    category = "average"
+def get_all_total_branch_number_of_passed_subject(category:str,subject:str,):
     branch = [1,2,3,4]
     
     dict_data = {}
@@ -84,7 +82,7 @@ def get_all_total_branch_number_of_occurrences():
             df = pd.DataFrame(csv_data)
             df = sort_crime_data(df)
         
-            extraction_df = df.loc["발생건수"]
+            extraction_df = df.loc[subject]
             
             dict_data[f"{branch[i]}분기"] = extraction_df
         return dict_data    

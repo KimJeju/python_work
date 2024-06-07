@@ -30,6 +30,15 @@ export interface ITreeMapData {
 
 export interface ITreeMapDataList {
     data : ITreeMapData[]
+}
+
+export interface  ICandlestickData {
+    x : string,
+    y : number[]
+ }
+
+export interface ICandlestickDataList {
+    data : ICandlestickData[]
  }
 
 

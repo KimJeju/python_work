@@ -8,7 +8,7 @@ export async function default_data_on_load() {
         const sub_crime = await get_dynamic_subject_data("2024",1,"sub", "발생건수");
         const occurrences_data = await get_dynamic_subject_data("2024",1,"average", "발생건수");
         const arrest_data = await get_dynamic_subject_data("2024",1,"average","검거건수")
-        const crime_branch_transition = await get_crime_branch_transiiton();
+        const crime_branch_transition = await get_crime_branch_transiiton("average","발생건수");
         return [total_crime, crime_branch_transition, sub_crime , occurrences_data,arrest_data,];
 
     }catch(error){
@@ -63,9 +63,9 @@ export async function selected_branch_crime_data(year:string,branch:number) {
     return response;
 }
 
-export async function get_crime_branch_transiiton() {
+export async function get_crime_branch_transiiton(cagetory:string, subject:string) {
     const response = await axios.get(
-        crime_branch_default_url + "number_of_occurrences"
+        crime_branch_default_url + "passed_subject?cagetory="+cagetory+"&subject="+subject
     ).then((response) => {
         return response.data
     }).catch((error) => {

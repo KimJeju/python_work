@@ -1,10 +1,10 @@
 import { useRecoilValue } from "recoil"
-import { ILineChartData, IMainChartData } from "../../../interfaces/IChartModel";
-import { chart_data_columns_to_array, chart_data_to_array, line_chart_data_slice } from "../../../utils/ChartDataUtil";
 import { makeStyles } from "tss-react/mui";
 import { Grid, Typography } from "@mui/material";
-import { crimeBranchTransitionState } from "../../../state/crime_branch/total/CrimeBranchState";
 import { LineChart } from "@mui/x-charts";
+import { crimeBranchTransitionState } from "../../../state/crime_branch/total/CrimeBranchState";
+import { chart_data_columns_to_array, chart_data_to_array, line_chart_data_slice } from "../../../utils/ChartDataUtil";
+import { ILineChartData, IMainChartData } from "../../../interfaces/IChartModel";
 
 
 const useStyles = makeStyles()(() => {
@@ -29,7 +29,6 @@ export default function DynamicSubjectLineChart() {
 
     const { classes } = useStyles();
     const data = useRecoilValue(crimeBranchTransitionState);
-
     const using_subject = data as any
 
     const column_list = chart_data_columns_to_array(using_subject);
@@ -51,7 +50,7 @@ export default function DynamicSubjectLineChart() {
 
     return (
         <Grid xs={16} className={classes.root}>
-            <Typography>2023 분기별 범죄발생 추이</Typography>
+            <Typography>2023 총계 범죄발생 추이</Typography>
             <LineChart
                 width={800}
                 height={500}
