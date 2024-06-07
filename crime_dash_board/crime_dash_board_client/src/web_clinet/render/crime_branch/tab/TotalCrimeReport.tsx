@@ -1,19 +1,19 @@
 import { useRecoilState, useRecoilValue } from "recoil"
 import { Grid, Typography } from "@mui/material";
 import { makeStyles } from "tss-react/mui";
-import { arrestAverageState, occurrencesAverageState } from "../../../state/crime_branch/SubjectAverageState";
-import { dynamicSubCategoryState } from "../../../state/crime_branch/DynamicSubjectState";
+import { arrestAverageState, occurrencesAverageState } from "../../../state/crime_branch/total/SubjectAverageState";
+import { dynamicSubCategoryState } from "../../../state/crime_branch/total/DynamicSubjectState";
 import { useMemo, useState } from "react";
 import { default_data_on_load} from "../../../contexts/CrimeBranchContext";
-import { crimeBranchTransitionState, totalCrimebranchState } from "../../../state/crime_branch/CrimeBranchState";
+import { crimeBranchTransitionState, totalCrimebranchState } from "../../../state/crime_branch/total/CrimeBranchState";
 import { IArgumentType } from "../../../interfaces/IPropsModel";
 
 //components
 import SingDataBox from "../../../components/SingleDataBox";
-import ToTalCrimeBarCharts from "../../../components/data_chart/ToTalCrimeBarCharts";
-import AverageSubjectPieChart from "../../../components/data_chart/AverageSubjectPieChart";
-import DynamicSubjectLineChart from "../../../components/data_chart/DynamicSubjectLineChart";
-import SwarmPlotChart from "../../../components/data_chart/SwarmPlotChart";
+import ToTalCrimeBarCharts from "../../../components/data_chart/total_crime/ToTalCrimeBarCharts";
+import AverageSubjectPieChart from "../../../components/data_chart/total_crime/AverageSubjectPieChart";
+import DynamicSubjectLineChart from "../../../components/data_chart/total_crime/DynamicSubjectLineChart";
+import SwarmPlotChart from "../../../components/data_chart/total_crime/SwarmPlotChart";
 
 const useStyles = makeStyles()(() => {
     return {
@@ -68,8 +68,6 @@ export default function TotalCrimeReport() {
     useMemo(() => {
         async function get_all_default_data() {
             const default_data = await default_data_on_load();
-
-            console.log(default_data);
             if (default_data != undefined) {
                 setTotalData({
                     average: default_data[0].average,

@@ -1,10 +1,10 @@
 import { ResponsiveCirclePackingCanvas } from '@nivo/circle-packing'
 import { useRecoilValue } from 'recoil'
-import { dynamicSubCategoryState } from '../../state/crime_branch/DynamicSubjectState'
-import { get_swarm_chart_data_key_pair_value } from '../../utils/ChartDataUtil'
+import { dynamicSubCategoryState } from '../../../state/crime_branch/total/DynamicSubjectState'
+import { get_swarm_chart_data_key_pair_value } from '../../../utils/ChartDataUtil'
 import { Grid, Typography } from '@mui/material'
 import { makeStyles } from 'tss-react/mui'
-import { IArgumentType } from '../../interfaces/IPropsModel'
+import { IArgumentType } from '../../../interfaces/IPropsModel'
 
 const useStyles = makeStyles()(() => {
     return {
@@ -29,7 +29,7 @@ export default function SwarmPlotChart({data}: {data: IArgumentType}) {
 
     const { classes } = useStyles();
     const tuple_data = get_swarm_chart_data_key_pair_value(data.args);
-
+    
     return (
         <Grid item xs={12} className={classes.root}>
             <Typography>{data.key}</Typography>

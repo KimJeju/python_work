@@ -1,7 +1,8 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
-import TotalCrimeReport from './tab_render/TotalCrimeReport';
+import TotalCrimeReport from './tab/TotalCrimeReport';
+import MainCrimeReport from './tab/MainCrimeReport';
 
 function CrimeBranchTap() {
   return (
@@ -14,7 +15,7 @@ function CrimeBranchTap() {
         <TotalCrimeReport />
       </Tab>
       <Tab eventKey="main" title="대분류">
-        Tab content for main
+        <MainCrimeReport />
       </Tab>
       <Tab eventKey="sub" title="소분류">
         Tab content for sub

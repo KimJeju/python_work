@@ -1,9 +1,9 @@
 import { Button } from "@mui/material";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { comboboxState } from "../../state/global/ComboBoxState";
-import { totalCrimebranchState } from "../../state/crime_branch/CrimeBranchState";
-import { dynamicSubCategoryState } from "../../state/crime_branch/DynamicSubjectState";
-import { arrestAverageState, occurrencesAverageState } from "../../state/crime_branch/SubjectAverageState";
+import { totalCrimebranchState } from "../../state/crime_branch/total/CrimeBranchState";
+import { dynamicSubCategoryState } from "../../state/crime_branch/total/DynamicSubjectState";
+import { arrestAverageState, occurrencesAverageState } from "../../state/crime_branch/total/SubjectAverageState";
 import { seleted_data_on_load } from "../../contexts/CrimeBranchContext";
 
 
