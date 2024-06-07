@@ -1,10 +1,10 @@
 import { BarChart } from '@mui/x-charts/BarChart';
-import { IMainChartData } from "../../Interfaces/IChartModel";
+import { IMainChartData } from "../../interfaces/IChartModel";
 import { chart_data_to_array, slice_total_avg_data } from "../../utils/ChartDataUtil";
 import { Grid, Typography } from "@mui/material";
-import { ITotalData } from "../../Interfaces/ICrimeBranchModel";
+import { ITotalData } from "../../interfaces/ICrimeBranchModel";
 import { makeStyles } from "tss-react/mui";
-import { IArgumentType } from '../../Interfaces/IPropsModel';
+import { IArgumentType } from '../../interfaces/IPropsModel';
 const useStyles = makeStyles()(() => {
     return {
         root: {

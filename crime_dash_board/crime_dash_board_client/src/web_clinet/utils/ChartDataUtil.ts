@@ -1,4 +1,4 @@
-import { ILineChartData, ISwarmPlotData, ISwarmPlotDataList } from "../Interfaces/IChartModel";
+import { ILineChartData, ISwarmPlotData, ISwarmPlotDataList } from "../interfaces/IChartModel";
 
 
 export function chart_data_to_array(data: object): Array<number> {

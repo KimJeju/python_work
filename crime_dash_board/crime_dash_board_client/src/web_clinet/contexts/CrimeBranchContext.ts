@@ -1,7 +1,6 @@
 import axios from "axios";
-import { ICrimeBranchSelected } from "../Interfaces/IChartModel";
 import { crime_branch_default_url } from "../constants/GlobalConstant";
-import { ITotalData } from "../Interfaces/ICrimeBranchModel";
+import { ITotalData } from "../interfaces/ICrimeBranchModel";
 
 export async function default_data_on_load() {
     try{

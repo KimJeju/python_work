@@ -3,10 +3,10 @@ import { Grid, Typography } from "@mui/material";
 import { makeStyles } from "tss-react/mui";
 import { arrestAverageState, occurrencesAverageState } from "../../../state/crime_branch/SubjectAverageState";
 import { dynamicSubCategoryState } from "../../../state/crime_branch/DynamicSubjectState";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { default_data_on_load} from "../../../contexts/CrimeBranchContext";
 import { crimeBranchTransitionState, totalCrimebranchState } from "../../../state/crime_branch/CrimeBranchState";
-import { IArgumentType } from "../../../Interfaces/IPropsModel";
+import { IArgumentType } from "../../../interfaces/IPropsModel";
 
 //components
 import SingDataBox from "../../../components/SingleDataBox";
@@ -56,12 +56,14 @@ export default function TotalCrimeReport() {
 
     const data_title: string = '총 계'
 
-    const [totalData, setTotalData] = useRecoilState(totalCrimebranchState); // main, sub, average 
-    const [branchTransitiom, setBranchTransition] = useRecoilState(crimeBranchTransitionState); // 2023 분기별 범죄 발생추이
-    const [subCrimeData, setSubCrimeData] = useRecoilState(dynamicSubCategoryState); // 소분류데이터
-    const [avgOccurrencesData, setAvgOccurencesData] = useRecoilState(occurrencesAverageState); // 중분류 범죄발생추이
-    const [avgArrestData, setAvgArrestData] = useRecoilState(arrestAverageState); // 중분류 검거건 추이
+    const [, setTotalData] = useRecoilState(totalCrimebranchState); // main, sub, average 
+    const [, setBranchTransition] = useRecoilState(crimeBranchTransitionState); // 2023 분기별 범죄 발생추이
+    const [, setSubCrimeData] = useRecoilState(dynamicSubCategoryState); // 소분류데이터
+    const [, setAvgOccurencesData] = useRecoilState(occurrencesAverageState); // 중분류 범죄발생추이
+    const [, setAvgArrestData] = useRecoilState(arrestAverageState); // 중분류 검거건 추이
     // const [subCategoryData, setSubCategoryData] = useRecoilState(dynamicSubCategoryState);
+
+    const [loading, setLoading] = useState(true);
 
     useMemo(() => {
         async function get_all_default_data() {
@@ -79,12 +81,12 @@ export default function TotalCrimeReport() {
                 setAvgOccurencesData(default_data[3]);
                 setAvgArrestData(default_data[4]);
             }
+            setLoading(false);
         }
         get_all_default_data();
     }, [])
 
     //즉각적인 데이터 변동이 어려운 차트에 대하여 값을 직접 대입해준다.
-
     const total_data_args : IArgumentType = {
         key : "종합 총계",
         args : useRecoilValue(totalCrimebranchState)
@@ -105,17 +107,15 @@ export default function TotalCrimeReport() {
         args : useRecoilValue(arrestAverageState)
     } 
 
-    console.log(total_data_args.args.average);
-
-    if (totalData.average == undefined || totalData.average == null) {
+    if (loading == true) {
         return <></>
     } else {
         return (
             <Grid container xs={12} spacing={2} className={classes.root} >
-                <Typography className={classes.data_title}>{data_title}</Typography>
+                <Typography className={classes.data_title}></Typography>
                 <Grid container spacing={2} className={classes.total_avg_container}>
                     {
-                        Object.entries(totalData.average["총 계"]).map((el, index) => (
+                        Object.entries(total_data_args.args.average["총 계"]).map((el, index) => (
                             <SingDataBox key={index} data={el[1] as string} avg_title={el[0]} />
                         ))
                     }

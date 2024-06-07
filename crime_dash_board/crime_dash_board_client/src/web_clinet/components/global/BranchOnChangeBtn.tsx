@@ -13,10 +13,10 @@ export default function BranchOnChangeBtn() {
     const comboBoxKey = "selected_key"
     const seletetedComboboxValue = useRecoilValue(comboboxState(comboBoxKey));
 
-    const [totalData, setTotalData] = useRecoilState(totalCrimebranchState);
-    const [subCrimeData, setSubCrimeData] = useRecoilState(dynamicSubCategoryState);
-    const [avgOccurrencesData, setAvgOccurencesData] = useRecoilState(occurrencesAverageState);
-    const [avgArrestData, setAvgArrestData] = useRecoilState(arrestAverageState);
+    const [,setTotalData] = useRecoilState(totalCrimebranchState);
+    const [,setSubCrimeData] = useRecoilState(dynamicSubCategoryState);
+    const [,setAvgOccurencesData] = useRecoilState(occurrencesAverageState);
+    const [,setAvgArrestData] = useRecoilState(arrestAverageState);
 
     async function onChangeCrimeBranch() {
         try {

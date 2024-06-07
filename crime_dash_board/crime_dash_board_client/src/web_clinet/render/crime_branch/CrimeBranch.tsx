@@ -4,14 +4,14 @@ import { ComboBox } from "../../components/ComboBox";
 
 //components
 import CrimeBranchTap from "./CrimeBranchTap";
-import SideNav from "../../globals/SideNav";
+import SideNav from "../../components/global/SideNav";
 import BranchOnChangeBtn from "../../components/global/BranchOnChangeBtn";
 
 
 const Container = styled.div`
- width : calc(100% - 5vw);
- height : 100vh;
- margin : 5%;
+    width : calc(100% - 5vw);
+    height : 100vh;
+    margin : 5%;
 `
 
 const SelectorContainer = styled.div`

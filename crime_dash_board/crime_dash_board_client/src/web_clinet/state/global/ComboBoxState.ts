@@ -1,5 +1,5 @@
 import { atom, atomFamily } from "recoil";
-import { ICrimeBranchSelected } from "../../Interfaces/IChartModel";
+import { ICrimeBranchSelected } from "../../interfaces/IChartModel";
 
 
 export const comboboxState = atomFamily<ICrimeBranchSelected, string>({

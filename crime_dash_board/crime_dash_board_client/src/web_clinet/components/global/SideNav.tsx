@@ -98,8 +98,8 @@ export default function SideNav() {
 
   const navigate = useNavigate();
 
-  const handleNavigate = (path : number) => {
-    const link : string[] = ['/branch', '/미정', '/미정', '/미정']
+  const handleNavigate = (path: number) => {
+    const link: string[] = ['/branch', '/미정', '/미정', '/미정']
 
     navigate(link[path])
   }
@@ -131,7 +131,7 @@ export default function SideNav() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            국내 범죄동향
+            Crime Trend Dashboards
           </Typography>
         </Toolbar>
       </AppBar>
@@ -144,7 +144,7 @@ export default function SideNav() {
         <Divider />
         <List>
           {['경찰청데이터', '미정1', '미정2', '미정3'].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: 'block' }} onClick={() => {handleNavigate(index)}}>
+            <ListItem key={text} disablePadding sx={{ display: 'block' }} onClick={() => { handleNavigate(index) }}>
               <ListItemButton
                 sx={{
                   minHeight: 48,
@@ -159,7 +159,7 @@ export default function SideNav() {
                     justifyContent: 'center',
                   }}
                 >
-                  {index % 2 === 0 ?  <HistoryIcon /> :<InboxIcon />}
+                  {index % 2 === 0 ? <HistoryIcon /> : <InboxIcon />}
                 </ListItemIcon>
                 <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
               </ListItemButton>

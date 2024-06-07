@@ -9,7 +9,7 @@ const useStyles = makeStyles()(() => {
             marginLeft: "1vw",
             boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
             borderRadius: "1rem",
-            transition: "0.2s",
+            transition: "0.5s",
             '&:hover': {
                 backgroundColor: "white",
                 boxShadow: "rgba(0, 0, 0, 0.24) 3px 6px 16px"

@@ -1,10 +1,10 @@
 
-import { IPieChartData } from "../../Interfaces/IChartModel";
+import { IPieChartData } from "../../interfaces/IChartModel";
 import { chart_data_columns_to_array, chart_data_to_array } from "../../utils/ChartDataUtil";
 import { PieChart } from "@mui/x-charts";
 import { Grid, Typography } from "@mui/material";
 import { makeStyles } from "tss-react/mui";
-import { IArgumentType } from "../../Interfaces/IPropsModel";
+import { IArgumentType } from "../../interfaces/IPropsModel";
 const useStyles = makeStyles()(() => {
   return {
     root: {

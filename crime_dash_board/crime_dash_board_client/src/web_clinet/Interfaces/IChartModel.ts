@@ -28,8 +28,3 @@ export interface IDictData {
     [key : string ]:number;
 }
 
-export interface ICrimeBranchSelected {
-    "label" : string,
-    "year" : number,
-    "branch" : number
-}

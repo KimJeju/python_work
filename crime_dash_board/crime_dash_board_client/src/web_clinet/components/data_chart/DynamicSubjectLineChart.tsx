@@ -1,5 +1,5 @@
 import { useRecoilValue } from "recoil"
-import { ILineChartData, IMainChartData } from "../../Interfaces/IChartModel";
+import { ILineChartData, IMainChartData } from "../../interfaces/IChartModel";
 import { chart_data_columns_to_array, chart_data_to_array, line_chart_data_slice } from "../../utils/ChartDataUtil";
 import { makeStyles } from "tss-react/mui";
 import { Grid, Typography } from "@mui/material";
