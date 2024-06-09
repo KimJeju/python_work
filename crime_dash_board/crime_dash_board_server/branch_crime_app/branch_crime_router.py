@@ -36,3 +36,8 @@ def dynamic_subject_crime_data(year:str, branch:int, category:str, subject:str):
 def number_of_occurrences_crime_data(cagetory:str,subject:str):
     occurrences_crime_data = branch_crime_util.get_all_total_branch_number_of_passed_subject(category=cagetory,subject=subject)
     return occurrences_crime_data
+
+@router.get('/passed_subject_categorize')
+def number_of_occurrences_crime_data(cagetory:str,subject:str):
+    occurrences_crime_data = branch_crime_util.get_all_total_branch_number_of_passed_subject_categorize(category=cagetory,subject=subject)
+    return occurrences_crime_data

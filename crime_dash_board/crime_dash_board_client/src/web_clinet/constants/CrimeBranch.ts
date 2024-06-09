@@ -1,9 +1,25 @@
-import { ICrimeBranchSelected } from "../interfaces/ISeletBoxModel";
+import { ICrimeBranchMainPassedSeleted, ICrimeBranchSelected } from "../interfaces/ISelectBoxModel";
 
-export const crimeBranch_combo_select : Array<ICrimeBranchSelected> = [
+export const crime_branch_selector_value : Array<ICrimeBranchSelected> = [
     { label : "2024년 1분기 범죄발생 통계", year: 2024, branch : 1},
     { label : "2023년 4분기 범죄발생 통계", year: 2023, branch : 4},
     { label : "2023년 3분기 범죄발생 통계", year: 2023, branch : 3},
     { label : "2023년 2분기 범죄발생 통계", year: 2023, branch : 2},
     { label : "2023년 1분기 범죄발생 통계", year: 2023, branch : 1},
 ]
+
+export const crime_branch_main_passed_selector_value : Array<ICrimeBranchMainPassedSeleted> = [
+    { label : "2023년 3분기 범죄발생 통계", category: "main", subject :"절도범죄"},
+    { label : "2023년 3분기 범죄발생 통계", category: "main", subject :"특별경제범죄"},
+    { label : "2023년 3분기 범죄발생 통계", category: "main", subject :"마약범죄"},
+    { label : "2023년 3분기 범죄발생 통계", category: "main", subject :"보건범죄"},
+    { label : "2023년 3분기 범죄발생 통계", category: "main", subject :"환경범죄"},
+    { label : "2023년 3분기 범죄발생 통계", category: "main", subject :"교통범죄"},
+    { label : "2023년 3분기 범죄발생 통계", category: "main", subject :"노동범죄"},
+    { label : "2023년 3분기 범죄발생 통계", category: "main", subject :"안보범죄"},
+    { label : "2023년 3분기 범죄발생 통계", category: "main", subject :"선거범죄"},
+    { label : "2023년 3분기 범죄발생 통계", category: "main", subject :"병역범죄"},
+    { label : "2023년 3분기 범죄발생 통계", category: "main", subject :"기타범죄"},
+]
+
+                     

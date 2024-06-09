@@ -1,9 +1,6 @@
 import { useRecoilValue } from "recoil"
 import { makeStyles } from "tss-react/mui";
 import { Grid, Typography } from "@mui/material";
-import { LineChart } from "@mui/x-charts";
-import { chart_data_columns_to_array, chart_data_to_array, line_chart_data_slice, main_line_chart_data_slice } from "../../../utils/ChartDataUtil";
-import { ICandlestickData, ICandlestickDataList, ILineChartData, IMainChartData } from "../../../interfaces/IChartModel";
 import { mainPassedTotalSubjectState } from "../../../state/crime_branch/main/MainDataState";
 
 

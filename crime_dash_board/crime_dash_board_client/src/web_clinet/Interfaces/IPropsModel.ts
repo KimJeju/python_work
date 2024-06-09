@@ -1,4 +1,4 @@
-import { ICrimeBranchSelected } from "./ISeletBoxModel"
+import { ICrimeBranchSelected } from "./ISelectBoxModel"
 
 export type IArrayPropsType = Array<ICrimeBranchSelected | number | string>
 

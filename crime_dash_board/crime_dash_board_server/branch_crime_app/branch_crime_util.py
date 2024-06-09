@@ -89,6 +89,26 @@ def get_all_total_branch_number_of_passed_subject(category:str,subject:str,):
     except Exception:
         print(Exception)
         
+def get_all_total_branch_number_of_passed_subject_categorize(category:str,subject:str,):
+    branch = [1,2,3,4]
+    
+    dict_data = {}
+        
+    try:
+        for i in range(0,4):
+            csv_data = pd.read_csv(f'./templates/crime_data/branch/2023/{category}/crime_report_branch_{branch[i]}_2023_{category}_crime_data.csv')
+            df = pd.DataFrame(csv_data)                        
+            df = sort_crime_data(df)
+            
+            print(df)
+            
+            extraction_df = df.loc[:,subject]
+            
+            dict_data[f"{branch[i]}분기 {subject} 통계"] = extraction_df
+        return dict_data    
+    except Exception:
+        print(Exception)
+    
         
 # 데이터 정리 메서드
 def sort_crime_data(data : pd.DataFrame):
