@@ -9,17 +9,17 @@ export const crime_branch_selector_value : Array<ICrimeBranchSelected> = [
 ]
 
 export const crime_branch_main_passed_selector_value : Array<ICrimeBranchMainPassedSeleted> = [
-    { label : "2023년 3분기 범죄발생 통계", category: "main", subject :"절도범죄"},
-    { label : "2023년 3분기 범죄발생 통계", category: "main", subject :"특별경제범죄"},
-    { label : "2023년 3분기 범죄발생 통계", category: "main", subject :"마약범죄"},
-    { label : "2023년 3분기 범죄발생 통계", category: "main", subject :"보건범죄"},
-    { label : "2023년 3분기 범죄발생 통계", category: "main", subject :"환경범죄"},
-    { label : "2023년 3분기 범죄발생 통계", category: "main", subject :"교통범죄"},
-    { label : "2023년 3분기 범죄발생 통계", category: "main", subject :"노동범죄"},
-    { label : "2023년 3분기 범죄발생 통계", category: "main", subject :"안보범죄"},
-    { label : "2023년 3분기 범죄발생 통계", category: "main", subject :"선거범죄"},
-    { label : "2023년 3분기 범죄발생 통계", category: "main", subject :"병역범죄"},
-    { label : "2023년 3분기 범죄발생 통계", category: "main", subject :"기타범죄"},
+    { label : "절도범죄", category: "main", subject :"절도범죄"},
+    { label : "특별경제범죄", category: "main", subject :"특별경제범죄"},
+    { label : "마약범죄", category: "main", subject :"마약범죄"},
+    { label : "보건범죄", category: "main", subject :"보건범죄"},
+    { label : "환경범죄", category: "main", subject :"환경범죄"},
+    { label : "교통범죄", category: "main", subject :"교통범죄"},
+    { label : "노동범죄", category: "main", subject :"노동범죄"},
+    { label : "안보범죄", category: "main", subject :"안보범죄"},
+    { label : "선거범죄", category: "main", subject :"선거범죄"},
+    { label : "병역범죄", category: "main", subject :"병역범죄"},
+    { label : "기타범죄", category: "main", subject :"기타범죄"},
 ]
 
                      

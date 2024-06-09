@@ -54,6 +54,7 @@ def get_categorize_crime_branch(year:str, branch:int, category:str):
         print(FileNotFoundError)    
         return "FILE NOT FOUND"
 
+# 인자 값에 따른 데이터 세부 정보를 가져올 메서드
 def get_dynamic_subject_crime_data(year:str, branch:int, category:str, subject:str):    
     dict_data = {}
     try:
@@ -71,6 +72,7 @@ def get_dynamic_subject_crime_data(year:str, branch:int, category:str, subject:s
     except Exception:
         print(Exception)
         
+# 분기에 따른 모든 데이터를 가져올 함수
 def get_all_total_branch_number_of_passed_subject(category:str,subject:str,):
     branch = [1,2,3,4]
     
@@ -89,7 +91,8 @@ def get_all_total_branch_number_of_passed_subject(category:str,subject:str,):
     except Exception:
         print(Exception)
         
-def get_all_total_branch_number_of_passed_subject_categorize(category:str,subject:str,):
+# 분기와 세부주제에 따른 데이터를 가져올 함수
+def get_subject_categorize_branch_number_of_passed(category:str,subject:str):
     branch = [1,2,3,4]
     
     dict_data = {}
@@ -99,9 +102,7 @@ def get_all_total_branch_number_of_passed_subject_categorize(category:str,subjec
             csv_data = pd.read_csv(f'./templates/crime_data/branch/2023/{category}/crime_report_branch_{branch[i]}_2023_{category}_crime_data.csv')
             df = pd.DataFrame(csv_data)                        
             df = sort_crime_data(df)
-            
-            print(df)
-            
+                        
             extraction_df = df.loc[:,subject]
             
             dict_data[f"{branch[i]}분기 {subject} 통계"] = extraction_df

@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client'
 import './index.css'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import PageError from './web_clinet/components/global/PageError.tsx'
-import CrimeBranch from './web_clinet/render/crime_branch/CrimeBranch.tsx'
+import CrimeBranch from './web_clinet/pages/crime_branch/CrimeBranch.tsx'
 import { RecoilRoot } from 'recoil'
 import App from './App.tsx'
 

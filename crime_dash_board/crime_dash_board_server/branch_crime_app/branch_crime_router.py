@@ -39,5 +39,5 @@ def number_of_occurrences_crime_data(cagetory:str,subject:str):
 
 @router.get('/passed_subject_categorize')
 def number_of_occurrences_crime_data(cagetory:str,subject:str):
-    occurrences_crime_data = branch_crime_util.get_all_total_branch_number_of_passed_subject_categorize(category=cagetory,subject=subject)
+    occurrences_crime_data = branch_crime_util.get_subject_categorize_branch_number_of_passed(category=cagetory,subject=subject)
     return occurrences_crime_data

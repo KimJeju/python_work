@@ -1,4 +1,4 @@
-import { BindingDataType } from "../render/crime_branch/tab/TotalCrimeReport";
+import { BindingDataType } from "../pages/crime_branch/tab/TotalCrimeReport";
 import { Grid } from "@mui/material";
 import { makeStyles } from 'tss-react/mui';
 

@@ -20,7 +20,7 @@ export const mainDataArrestPersentState = atom({
     default : []
 })
 
-export const mainPassedTotalSubjectState = atom({
-    key : "main_data_legal_entity",
+export const mainTrainsitionSubjectCaterozieState = atom({
+    key : "main_data_transition_subject_categorize",
     default : []
 })

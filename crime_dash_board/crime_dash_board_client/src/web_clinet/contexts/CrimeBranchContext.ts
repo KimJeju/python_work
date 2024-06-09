@@ -2,6 +2,7 @@ import axios from "axios";
 import { crime_branch_default_url } from "../constants/GlobalConstant";
 import { ITotalData } from "../interfaces/ICrimeBranchModel";
 
+//on load 시 실행 될 함수
 export async function default_data_on_load() {
     try{
         const total_crime =  await total_crime_branch_data();
@@ -19,6 +20,7 @@ export async function default_data_on_load() {
     }
 }
 
+// 분기 선택 시 실행 될 함수
 export async function seleted_data_on_load(year : string, branch : number, subject : string, ) {
     try{
         const total_crime =  await selected_branch_crime_data(year,branch);
@@ -34,6 +36,7 @@ export async function seleted_data_on_load(year : string, branch : number, subje
     }
 }
 
+//데이터 총계 가져오는 함수
 export async function total_crime_branch_data() {
     const total_crime = await axios.get(
         crime_branch_default_url
@@ -52,6 +55,7 @@ export async function total_crime_branch_data() {
     return total_crime;
 }
 
+//선택 된 년도 및 분기에서 데이터를 가져오는 함수
 export async function selected_branch_crime_data(year:string,branch:number) {
     const response = await axios.get(
         crime_branch_default_url + "seleted?year=" + year +"&branch=" + branch
@@ -63,6 +67,7 @@ export async function selected_branch_crime_data(year:string,branch:number) {
     return response;
 }
 
+//2023년 모든 분기 자료들을 가져올 함수
 export async function get_crime_branch_transiiton(cagetory:string, subject:string) {
     const response = await axios.get(
         crime_branch_default_url + "passed_subject?cagetory="+cagetory+"&subject="+subject
@@ -74,6 +79,19 @@ export async function get_crime_branch_transiiton(cagetory:string, subject:strin
     return response
 }
 
+//202년 분기 세부항목 별 데이터를 가져올 함수
+export async function get_subject_categorize_branch_transition(category:string, subject:string) {
+    const response = await axios.get(
+        crime_branch_default_url + "/passed_subject_categorize?cagetory="+ category + "&subject=" + subject
+    ).then((response) => {
+        return response.data
+    }).catch((error) => {
+        console.log(error)
+    })
+    return response;
+}
+
+//인자에 따라 데이터를 가져올 함수
 export async function get_dynamic_subject_data(year : string, branch : number, category : string, subject : string) {
     const response = await axios.get(
         crime_branch_default_url + "dynamic_subject?year=" + year + "&branch=" + branch + "&category=" + category + "&subject=" + subject

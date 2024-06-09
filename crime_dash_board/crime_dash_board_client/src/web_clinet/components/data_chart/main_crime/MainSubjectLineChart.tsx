@@ -1,18 +1,19 @@
-import { useRecoilValue } from "recoil"
 import { makeStyles } from "tss-react/mui";
 import { Grid, Typography } from "@mui/material";
-import { mainPassedTotalSubjectState } from "../../../state/crime_branch/main/MainDataState";
+import { ComboBox } from "../../ComboBox";
+import { crime_branch_main_passed_selector_value } from "../../../constants/CrimeBranch";
+import { IArgumentType } from "../../../interfaces/IPropsModel";
 
 
 const useStyles = makeStyles()(() => {
     return {
         root: {
             display: "flex",
-            alignItems: "center",
             flexDirection: "column",
             boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
             borderRadius: "1rem",
             transition: "0.2s",
+            padding : "1rem",
             "&:hover": {
                 backgroundColor: "white",
                 boxShadow: "rgba(0, 0, 0, 0.24) 3px 6px 16px",
@@ -22,12 +23,11 @@ const useStyles = makeStyles()(() => {
     };
 });
 
-export default function MainSubjectLineChart() {
+export default function MainSubjectLineChart({data} : {data : IArgumentType}) {
 
     const { classes } = useStyles();
-    const data = useRecoilValue(mainPassedTotalSubjectState);
 
-    const using_subject = data as any
+    console.log(data.args);
     // const column_list = chart_data_columns_to_array(using_subject);
     // const candle_data_list: ICandlestickDataList = {
     //     data: []
@@ -58,6 +58,10 @@ export default function MainSubjectLineChart() {
     return (
         <Grid xs={16} className={classes.root}>
             <Typography>2023 대분류 범죄발생 추이</Typography>
+            <ComboBox args={crime_branch_main_passed_selector_value}/>
+            <div>
+                aaaa
+            </div>
             {/* <LineChart
                 width={800}
                 height={500}
