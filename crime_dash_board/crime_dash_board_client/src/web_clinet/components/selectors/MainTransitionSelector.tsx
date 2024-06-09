@@ -14,9 +14,6 @@ export const MainTransitionSelector = <T extends IArrayPropsType>({ args }: IArr
   const selector_key = "main_transition_selector"
   const setSelectedRecoilState = useSetRecoilState(main_transition_state(selector_key));
 
-
-  console.log(value);
-
   useEffect(() => {
     if(value != null){
       setSelectedRecoilState(value);

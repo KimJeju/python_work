@@ -1,18 +1,17 @@
 import { Button } from "@mui/material";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { total_select_state } from "../../state/global/SelectorState";
 import { totalCrimebranchState } from "../../state/crime_branch/total/CrimeBranchState";
 import { dynamicSubCategoryState } from "../../state/crime_branch/total/DynamicSubjectState";
 import { arrestAverageState, occurrencesAverageState } from "../../state/crime_branch/total/SubjectAverageState";
 import { select_main_data_on_load, seleted_data_on_load } from "../../contexts/CrimeBranchContext";
 import { mainDataArrestPeopleState, mainDataArrestPersentState, mainDataArrestState, mainDataOccurrenceState } from "../../state/crime_branch/main/MainDataState";
-
-
+import { total_branch_state } from "../../state/global/SelectorState";
 
 export default function BranchOnChangeBtn() {
 
-    const comboBoxKey = "total_selector"
-    const seletetedComboboxValue = useRecoilValue(total_select_state(comboBoxKey));
+
+    const selector_key = "total_branch_selector";
+    const seletected_value = useRecoilValue(total_branch_state(selector_key));
 
     //총계
     const [,setTotalData] = useRecoilState(totalCrimebranchState);
@@ -28,8 +27,11 @@ export default function BranchOnChangeBtn() {
 
     async function onChangeCrimeBranch() {
         try {
-            const seleted_total_data = await seleted_data_on_load(seletetedComboboxValue.year.toString(), seletetedComboboxValue.branch, "average");
-            const seleted_main_data = await select_main_data_on_load(seletetedComboboxValue.year.toString(), seletetedComboboxValue.branch, "main");
+
+            const seleted_total_data = await seleted_data_on_load(seletected_value.year.toString(), seletected_value.branch, "average");
+            const seleted_main_data = await select_main_data_on_load(seletected_value.year.toString(), seletected_value.branch, "main");
+
+            console.log(seletected_value)
 
             if (seleted_total_data != undefined && seleted_main_data != undefined) {
                 

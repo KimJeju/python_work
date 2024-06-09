@@ -3,7 +3,7 @@ import { Autocomplete, TextField } from "@mui/material";
 import { useEffect, useState } from "react";
 import { IArrayProps, IArrayPropsType } from "../../interfaces/IPropsModel";
 import { useSetRecoilState } from "recoil";
-import { total_select_state } from "../../state/global/SelectorState";
+import { total_branch_state } from "../../state/global/SelectorState";
 
 
 
@@ -11,8 +11,8 @@ export const TotalBranchSelector = <T extends IArrayPropsType>({ args }: IArrayP
   const [value, setValue] = useState<any | null>(args[0]);
   const [inputValue, setInputValue] = useState<string>('');
 
-  const selector_key = "total_selector"
-  const setSelectedRecoilState = useSetRecoilState(total_select_state(selector_key));
+  const selector_key = "total_branch_selector"
+  const setSelectedRecoilState = useSetRecoilState(total_branch_state(selector_key));
 
   useEffect(() => {
     if(value != null){

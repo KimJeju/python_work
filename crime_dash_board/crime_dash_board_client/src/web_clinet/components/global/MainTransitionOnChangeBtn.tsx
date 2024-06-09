@@ -10,14 +10,10 @@ export function MainTransitionOnChangeBtn(){
     const [, setMainTransitiondSubjectCatetorizeData] = useRecoilState(mainDataTrainsitionSubjectCaterozieState); //중분류 세부항목 분기별 통계
 
     const selector_key = "main_transition_selector";
-    const seletected_value = useRecoilValue(main_transition_state(selector_key))
+    const seletected_value = useRecoilValue(main_transition_state(selector_key));
 
-    
     async function onChangeTransition(){
-        try{
-        
-        console.log(seletected_value);
-        
+        try{        
         const transition_data = await get_subject_categorize_branch_transition(seletected_value.category, seletected_value.subject);
         setMainTransitiondSubjectCatetorizeData(transition_data);
         }catch(error){
@@ -26,7 +22,7 @@ export function MainTransitionOnChangeBtn(){
         }
     }
     return(
-        <Button variant="contained" style={{ width : "calc(25%)"}}
+        <Button variant="contained" style={{ width : "calc(10%)", marginLeft : "1vw"}}
         onClick={() => {
             onChangeTransition();
         }}>검색</Button>

@@ -7,8 +7,6 @@ import { LineChart } from "@mui/x-charts";
 import { MainTransitionOnChangeBtn } from "../../global/MainTransitionOnChangeBtn";
 import { crime_branch_main_transition_value } from "../../../constants/CrimeBranch";
 import { MainTransitionSelector } from "../../selectors/MainTransitionSelector";
-
-
 const useStyles = makeStyles()(() => {
     return {
         root: {
@@ -25,6 +23,12 @@ const useStyles = makeStyles()(() => {
 
             }
         },
+        selector_container: {
+            display : "flex",
+            flexDirection : "row",
+            marginTop : "1vh",
+
+        }
     };
 });
 
@@ -53,9 +57,11 @@ export default function MainSubjectLineChart({data} : {data : IArgumentType}) {
 
     return (
         <Grid item xs={12}  className={classes.root}>
-            <Typography textAlign={"center"}>2023 대분류 세부통계별 범죄발생 추이</Typography>
+            <Typography textAlign={"center"}>2023 범죄유형별 범죄발생 추이</Typography>
+            <div className={classes.selector_container}>
             <MainTransitionSelector args={crime_branch_main_transition_value}/>
             <MainTransitionOnChangeBtn />
+            </div>
             <LineChart
                 width={800}
                 height={450}
