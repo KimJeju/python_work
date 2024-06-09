@@ -73,7 +73,7 @@ def get_dynamic_subject_crime_data(year:str, branch:int, category:str, subject:s
         print(Exception)
         
 # 분기에 따른 모든 데이터를 가져올 함수
-def get_all_total_branch_number_of_passed_subject(category:str,subject:str,):
+def get_all_total_branch_subject_number_of_transition(category:str,subject:str,):
     branch = [1,2,3,4]
     
     dict_data = {}
@@ -92,7 +92,7 @@ def get_all_total_branch_number_of_passed_subject(category:str,subject:str,):
         print(Exception)
         
 # 분기와 세부주제에 따른 데이터를 가져올 함수
-def get_subject_categorize_branch_number_of_passed(category:str,subject:str):
+def get_subject_categorize_branch_number_of_transition(category:str,subject:str):
     branch = [1,2,3,4]
     
     dict_data = {}
@@ -105,7 +105,7 @@ def get_subject_categorize_branch_number_of_passed(category:str,subject:str):
                         
             extraction_df = df.loc[:,subject]
             
-            dict_data[f"{branch[i]}분기 {subject} 통계"] = extraction_df
+            dict_data[f"{branch[i]}분기"] = extraction_df
         return dict_data    
     except Exception:
         print(Exception)

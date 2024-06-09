@@ -14,6 +14,14 @@ export interface ILineChartData {
     [key : string] : number[];
 }
 
+export interface IMainTransitionChartData {
+    Orrurrence: number[];
+    Arrest: number[];
+    Inspecttion: number[];
+    PeopleArrested: number[];
+    Coperation : number[];
+}
+
 export interface ISwarmPlotData {
     "name" : string;
     "value" : number;

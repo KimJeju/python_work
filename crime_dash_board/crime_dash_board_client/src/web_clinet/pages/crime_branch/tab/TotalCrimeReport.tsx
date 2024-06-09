@@ -118,7 +118,7 @@ export default function TotalCrimeReport() {
                     }
                 </Grid>
 
-                <Grid xs={12} className={classes.chart_container}>
+                <Grid item xs={12} className={classes.chart_container}>
                     <Grid container className={classes.left_chart_container}>
                         <AverageSubjectPieChart data={occucrrences_args}/>
                         <AverageSubjectPieChart data={arrest_args}/>

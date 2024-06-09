@@ -70,7 +70,7 @@ export async function selected_branch_crime_data(year:string,branch:number) {
 //2023년 모든 분기 자료들을 가져올 함수
 export async function get_crime_branch_transiiton(cagetory:string, subject:string) {
     const response = await axios.get(
-        crime_branch_default_url + "passed_subject?cagetory="+cagetory+"&subject="+subject
+        crime_branch_default_url + "transition?cagetory="+cagetory+"&subject="+subject
     ).then((response) => {
         return response.data
     }).catch((error) => {
@@ -82,7 +82,7 @@ export async function get_crime_branch_transiiton(cagetory:string, subject:strin
 //202년 분기 세부항목 별 데이터를 가져올 함수
 export async function get_subject_categorize_branch_transition(category:string, subject:string) {
     const response = await axios.get(
-        crime_branch_default_url + "/passed_subject_categorize?cagetory="+ category + "&subject=" + subject
+        crime_branch_default_url + "subject_categorize_transition?cagetory="+ category + "&subject=" + subject
     ).then((response) => {
         return response.data
     }).catch((error) => {
