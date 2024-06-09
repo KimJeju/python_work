@@ -4,7 +4,7 @@ import { ComboBox } from "../../ComboBox";
 import { crime_branch_main_passed_selector_value } from "../../../constants/CrimeBranch";
 import { IArgumentType } from "../../../interfaces/IPropsModel";
 import { chart_data_columns_to_array, chart_data_to_array, line_chart_data_slice } from "../../../utils/ChartDataUtil";
-import { ILineChartData, IMainChartData, IMainTransitionChartData } from "../../../interfaces/IChartModel";
+import { ILineChartData, IMainTransitionChartData } from "../../../interfaces/IChartModel";
 import { LineChart } from "@mui/x-charts";
 
 

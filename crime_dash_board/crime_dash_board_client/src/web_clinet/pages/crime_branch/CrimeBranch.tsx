@@ -4,7 +4,7 @@ import { ComboBox } from "../../components/ComboBox";
 //components
 import CrimeBranchTap from "./CrimeBranchTap";
 import SideNav from "../../components/global/SideNav";
-import BranchOnChangeBtn from "../../components/global/BranchOnChangeBtn";
+import BranchOnChangeBtn from "../../components/global/TotalBranchBranchOnChangeBtn";
 import { crime_branch_selector_value } from "../../constants/CrimeBranch";
 
 

@@ -3,7 +3,7 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import { makeStyles } from "tss-react/mui";
 import { IArgumentType } from "../../../interfaces/IPropsModel";
 import { mainDataArrestPeopleState, mainDataArrestPersentState, mainDataArrestState, mainDataOccurrenceState, mainDataTrainsitionSubjectCaterozieState, } from "../../../state/crime_branch/main/MainDataState";
-import { get_dynamic_subject_data, get_subject_categorize_branch_transition, } from "../../../contexts/CrimeBranchContext";
+import { default_main_data_on_load, } from "../../../contexts/CrimeBranchContext";
 import { useMemo } from "react";
 import MainSubjectPieChart from "../../../components/data_chart/main_crime/MainSubjectPieChart";
 import { MainTreeMap } from "../../../components/data_chart/main_crime/MainTreeMap";
@@ -38,11 +38,14 @@ export default function MainCrimeReport() {
 
     useMemo(() => {
         async function get_all_main_report_data() {
-            setMainOccurenceData(await get_dynamic_subject_data("2024", 1, "main", "발생건수"));
-            setMainArrestData(await get_dynamic_subject_data("2024", 1, "main", "검거건수"));
-            setMainArrestPeopleData(await get_dynamic_subject_data("2024", 1, "main", "검거인원"));
-            setMainArrestPersentData(await get_dynamic_subject_data("2024", 1, "main", "발생대비 검거건수(%)"));
-            setMainTransitiondSubjectCatetorizeData(await get_subject_categorize_branch_transition("main", "특별경제범죄"))
+            const default_data = await default_main_data_on_load("2023", 1, "main");
+            if (default_data != undefined) {
+                setMainOccurenceData(default_data[0])
+                setMainArrestData(default_data[1])
+                setMainArrestPeopleData(default_data[2])
+                setMainArrestPersentData(default_data[3])
+                setMainTransitiondSubjectCatetorizeData(default_data[4])
+            }
         }
         get_all_main_report_data();
     }, [])
