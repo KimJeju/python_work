@@ -24,7 +24,6 @@ export function MainTreeMap({ data }: { data: IArgumentType }) {
     
     const { classes } = useStyle()
     const data_set = get_tree_map_data_set(data.args);
-
     return (
         <div className={classes.root}>
             <ApexCharts

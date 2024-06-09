@@ -1,13 +1,13 @@
 export type CommonSeleted = {
-    label : string
+    label : string,
 }
 
 export interface ICrimeBranchSelected extends CommonSeleted{
     year : number,
-    branch : number
+    branch : number,
 }
 
-export interface ICrimeBranchMainPassedSeleted extends CommonSeleted{
+export interface ICrimeBranchMainTransitionSeleted extends CommonSeleted{
     category : string,
     subject : string,
 }

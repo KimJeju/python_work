@@ -1,11 +1,12 @@
 import { makeStyles } from "tss-react/mui";
 import { Grid, Typography } from "@mui/material";
-import { ComboBox } from "../../ComboBox";
-import { crime_branch_main_passed_selector_value } from "../../../constants/CrimeBranch";
 import { IArgumentType } from "../../../interfaces/IPropsModel";
 import { chart_data_columns_to_array, chart_data_to_array, line_chart_data_slice } from "../../../utils/ChartDataUtil";
 import { ILineChartData, IMainTransitionChartData } from "../../../interfaces/IChartModel";
 import { LineChart } from "@mui/x-charts";
+import { MainTransitionOnChangeBtn } from "../../global/MainTransitionOnChangeBtn";
+import { crime_branch_main_transition_value } from "../../../constants/CrimeBranch";
+import { MainTransitionSelector } from "../../selectors/MainTransitionSelector";
 
 
 const useStyles = makeStyles()(() => {
@@ -53,7 +54,8 @@ export default function MainSubjectLineChart({data} : {data : IArgumentType}) {
     return (
         <Grid item xs={12}  className={classes.root}>
             <Typography textAlign={"center"}>2023 대분류 세부통계별 범죄발생 추이</Typography>
-            <ComboBox args={crime_branch_main_passed_selector_value}/>
+            <MainTransitionSelector args={crime_branch_main_transition_value}/>
+            <MainTransitionOnChangeBtn />
             <LineChart
                 width={800}
                 height={450}

@@ -1,4 +1,4 @@
-import { ICrimeBranchMainPassedSeleted, ICrimeBranchSelected } from "../interfaces/ISelectBoxModel";
+import { ICrimeBranchMainTransitionSeleted, ICrimeBranchSelected } from "../interfaces/ISelectBoxModel";
 
 export const crime_branch_selector_value : Array<ICrimeBranchSelected> = [
     { label : "2024년 1분기 범죄발생 통계", year: 2024, branch : 1},
@@ -8,7 +8,7 @@ export const crime_branch_selector_value : Array<ICrimeBranchSelected> = [
     { label : "2023년 1분기 범죄발생 통계", year: 2023, branch : 1},
 ]
 
-export const crime_branch_main_passed_selector_value : Array<ICrimeBranchMainPassedSeleted> = [
+export const crime_branch_main_transition_value : Array<ICrimeBranchMainTransitionSeleted> = [
     { label : "절도범죄", category: "main", subject :"절도범죄"},
     { label : "특별경제범죄", category: "main", subject :"특별경제범죄"},
     { label : "마약범죄", category: "main", subject :"마약범죄"},

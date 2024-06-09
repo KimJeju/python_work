@@ -38,7 +38,7 @@ export default function MainCrimeReport() {
 
     useMemo(() => {
         async function get_all_main_report_data() {
-            const default_data = await default_main_data_on_load("2023", 1, "main");
+            const default_data = await default_main_data_on_load("2024", 1, "main");
             if (default_data != undefined) {
                 setMainOccurenceData(default_data[0])
                 setMainArrestData(default_data[1])

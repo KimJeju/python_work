@@ -1,18 +1,18 @@
 
 import { Autocomplete, TextField } from "@mui/material";
 import { useEffect, useState } from "react";
-import { IArrayProps, IArrayPropsType } from "../interfaces/IPropsModel";
-import { comboboxState } from "../state/global/ComboBoxState";
+import { IArrayProps, IArrayPropsType } from "../../interfaces/IPropsModel";
 import { useSetRecoilState } from "recoil";
+import { total_select_state } from "../../state/global/SelectorState";
 
 
 
-export const ComboBox = <T extends IArrayPropsType>({ args }: IArrayProps<T>) => {
+export const TotalBranchSelector = <T extends IArrayPropsType>({ args }: IArrayProps<T>) => {
   const [value, setValue] = useState<any | null>(args[0]);
   const [inputValue, setInputValue] = useState<string>('');
 
-  const comboBoxKey = "selected_key"
-  const setSelectedRecoilState = useSetRecoilState(comboboxState(comboBoxKey));
+  const selector_key = "total_selector"
+  const setSelectedRecoilState = useSetRecoilState(total_select_state(selector_key));
 
   useEffect(() => {
     if(value != null){

@@ -1,11 +1,11 @@
 import styled from "styled-components";
-import { ComboBox } from "../../components/ComboBox";
 
 //components
 import CrimeBranchTap from "./CrimeBranchTap";
 import SideNav from "../../components/global/SideNav";
-import BranchOnChangeBtn from "../../components/global/TotalBranchBranchOnChangeBtn";
+import BranchOnChangeBtn from "../../components/global/BranchOnChangeBtn";
 import { crime_branch_selector_value } from "../../constants/CrimeBranch";
+import { MainTransitionSelector } from "../../components/selectors/MainTransitionSelector";
 
 
 const Container = styled.div`
@@ -29,7 +29,7 @@ export default function CrimeBranch() {
             <Container>
                 <SideNav />
                 <SelectorContainer>
-                    <ComboBox args={crime_branch_selector_value} />
+                    <MainTransitionSelector args={crime_branch_selector_value} />
                     <BranchOnChangeBtn/>
                 </SelectorContainer>
                 <CrimeBranchTap />

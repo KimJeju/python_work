@@ -42,7 +42,7 @@ export async function default_main_data_on_load(year: string, branch: number, ca
         const main_occurrence = await get_dynamic_subject_data(year, branch, cagetory, "발생건수");
         const main_arrest = await get_dynamic_subject_data(year, branch, cagetory, "검거건수");
         const main_arrest_people = await get_dynamic_subject_data(year, branch, cagetory, "검거인원");
-        const main_arrest_persent = await get_dynamic_subject_data("2024", 1, "main", "발생대비 검거건수(%)");
+        const main_arrest_persent = await get_dynamic_subject_data(year, branch, cagetory, "발생대비 검거건수(%)");
         const main_arrest_transition_subject = await get_subject_categorize_branch_transition(cagetory, "특별경제범죄");
 
         return [main_occurrence, main_arrest, main_arrest_people, main_arrest_persent, main_arrest_transition_subject]
@@ -52,8 +52,18 @@ export async function default_main_data_on_load(year: string, branch: number, ca
     }
 }
 
-export async function select_main_data_on_load(year: string, branch: string, subject: string,) {
+//대분류 분기에 따라 가져오기 데이터 모두 가져오기
+export async function select_main_data_on_load(year: string, branch: number, cagetory: string) {
+    try{
+        const main_occurrence = await get_dynamic_subject_data(year, branch, cagetory, "발생건수");
+        const main_arrest = await get_dynamic_subject_data(year, branch, cagetory, "검거건수");
+        const main_arrest_people = await get_dynamic_subject_data(year, branch, cagetory, "검거인원");
+        const main_arrest_persent = await get_dynamic_subject_data("2023", 1, "main", "발생대비 검거건수(%)");
 
+        return [main_occurrence, main_arrest, main_arrest_people, main_arrest_persent]
+    }catch(error){
+        console.log(error)
+    }
 }
 
 //데이터 총계 가져오는 함수
