@@ -5,7 +5,7 @@ export function chart_data_to_array(data: object): Array<number> {
 
     const result_data: number[] = [];
 
-    Object.entries(data).map((value, index) => {
+    Object.entries(data).map((value) => {
         const int_value = Number.parseInt(value[1])
         result_data.push(int_value)
 
@@ -68,7 +68,7 @@ export function line_chart_data_slice(data: ILineChartData[], index: number) {
     return result_list;
 }
 
-export function get_tree_map_data_set(data: object) {
+export function get_tree_map_data_set(data: object) : ITreeMapDataList {
     const result_list: ITreeMapDataList = {
         data: []
     };

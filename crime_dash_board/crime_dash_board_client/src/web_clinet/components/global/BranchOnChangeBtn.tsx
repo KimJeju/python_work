@@ -31,8 +31,6 @@ export default function BranchOnChangeBtn() {
             const seleted_total_data = await seleted_data_on_load(seletected_value.year.toString(), seletected_value.branch, "average");
             const seleted_main_data = await select_main_data_on_load(seletected_value.year.toString(), seletected_value.branch, "main");
 
-            console.log(seletected_value)
-
             if (seleted_total_data != undefined && seleted_main_data != undefined) {
                 
                 //총계

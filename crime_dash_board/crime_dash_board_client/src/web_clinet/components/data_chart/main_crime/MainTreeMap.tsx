@@ -9,7 +9,7 @@ const useStyle = makeStyles()(() => {
             boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
             borderRadius: "1rem",
             transition: "0.2s",
-            paddingLeft : "1vw",
+            paddingLeft: "1vw",
             "&:hover": {
                 backgroundColor: "white",
                 boxShadow: "rgba(0, 0, 0, 0.24) 3px 6px 16px",
@@ -21,9 +21,17 @@ const useStyle = makeStyles()(() => {
 
 
 export function MainTreeMap({ data }: { data: IArgumentType }) {
-    
+
     const { classes } = useStyle()
-    const data_set = get_tree_map_data_set(data.args);
+    
+    let data_set = get_tree_map_data_set(data.args);
+
+    //분기 변화 시 데이터 초기화 후 재 정의
+    if (data_set.data != null) {
+        data_set.data = [];
+
+        data_set = get_tree_map_data_set(data.args);
+    }
     return (
         <div className={classes.root}>
             <ApexCharts

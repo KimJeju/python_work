@@ -131,7 +131,7 @@ export default function SideNav() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            Crime Trend Dashboards
+            국내 범죄동향
           </Typography>
         </Toolbar>
       </AppBar>

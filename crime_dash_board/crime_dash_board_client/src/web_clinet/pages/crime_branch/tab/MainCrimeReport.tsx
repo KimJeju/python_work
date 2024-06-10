@@ -82,14 +82,12 @@ export default function MainCrimeReport() {
                 <MainSubjectPieChart data={occurence_args} />
                 <MainSubjectPieChart data={arrest_args} />
                 <MainSubjectPieChart data={arrest_people_args} />
-                {/* <MainSubjectPieChart data={occurence_args} /> */}
             </Grid>
 
             <Grid container xs={12} spacing={2}>
                 <Grid item xs={6} className={classes.main_tree_map_container} >
                     <MainTreeMap data={arrest_persent_args} />
                 </Grid>
-
                 <Grid item xs={5.6} >
                     <MainSubjectLineChart data={transition_categorize_args} />
                 </Grid>
