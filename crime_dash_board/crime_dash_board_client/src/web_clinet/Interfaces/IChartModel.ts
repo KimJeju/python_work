@@ -49,6 +49,16 @@ export interface ICandlestickDataList {
     data : ICandlestickData[]
  }
 
+ export interface IHorizontalBarData {
+    [key :string] : number | string,
+ }
+
+ export interface IHorizontalBarDataList {
+    series : IHorizontalBarData[]
+}
+
+ 
+
 
 
 export interface IDictData {

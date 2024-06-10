@@ -1,6 +1,6 @@
-import { ICrimeBranchMainTransitionSeleted , ICrimeBranchSelected } from "./ISelectBoxModel"
+import { ICrimeBranchMainTransitionSeleted , ICrimeBranchSelected, ICrimeBranchSubSubjectSeleted } from "./ISelectBoxModel"
 
-export type IArrayPropsType = Array<ICrimeBranchSelected |  ICrimeBranchMainTransitionSeleted | number | string>
+export type IArrayPropsType = Array<ICrimeBranchSelected |  ICrimeBranchMainTransitionSeleted | ICrimeBranchSubSubjectSeleted | number | string>
 
 export type IArrayProps<T> = {
     args : T,

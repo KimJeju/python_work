@@ -1,5 +1,5 @@
 import { atom, atomFamily } from "recoil";
-import { ICrimeBranchMainTransitionSeleted, ICrimeBranchSelected } from "../../interfaces/ISelectBoxModel";
+import { ICrimeBranchMainTransitionSeleted, ICrimeBranchSelected, ICrimeBranchSubSubjectSeleted } from "../../interfaces/ISelectBoxModel";
 
 
 export const main_transition_state = atomFamily<ICrimeBranchMainTransitionSeleted,string>({
@@ -28,3 +28,18 @@ export const total_branch_state = atomFamily<ICrimeBranchSelected,string>({
             },
     })
 })
+
+export const sub_subject = atomFamily<ICrimeBranchSubSubjectSeleted,string>({
+    key : "sub_subject_selector",
+    default : (key : string) => 
+        atom<ICrimeBranchSubSubjectSeleted>({
+            key : "sub_subject_key",
+            default : {
+                label : "",
+                category : "sub",
+                branch : 1,
+                subject : "발생건수"
+            },
+    })
+})
+
