@@ -21,6 +21,11 @@ const useStyle = makeStyles()({
   
       }
     },
+
+    selector_container : {
+        display : "flex",
+        flexDirection : "row"
+    }
 })
 
 export default function SubCrimeReport() {
@@ -48,10 +53,13 @@ export default function SubCrimeReport() {
     }
 
     return (
-        <Grid container xs={8} className={classes.root}>
+        <Grid container xs={11.8} className={classes.root}>
             <Grid item xs={12}>
+
+                <Grid item xs={12} className={classes.selector_container}>
                 <SubSubjectSelector args={crime_branch_sub_subject_value} />
                 <SubSubjectOnChangeBtn />
+                </Grid>
                 <br/>
                 <SubHorizontalBarChart data={subject_data} />
             </Grid>
