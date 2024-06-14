@@ -24,11 +24,11 @@ export const MainTransitionSelector = <T extends IArrayPropsType>({ args }: IArr
     <div style={{marginTop :"5px"}}>
       <Autocomplete
         value={value}
-        onChange={(event: any, newValue: string | null) => {
+        onChange={(_event: any, newValue: string | null) => {
           setValue(newValue);
         }}
         inputValue={inputValue}
-        onInputChange={(event, newInputValue) => {
+        onInputChange={(_event, newInputValue) => {
           setInputValue(newInputValue);
         }}
         id="controllable-states-demo"

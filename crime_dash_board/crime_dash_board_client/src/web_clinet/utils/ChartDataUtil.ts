@@ -73,7 +73,7 @@ export function get_tree_map_data_set(data: object) : ITreeMapDataList {
         data: []
     };
 
-    Object.entries(data).map((value, index) => {
+    Object.entries(data).map((value) => {
         const result: ITreeMapData = {
             x: value[0],
             y: value[1],

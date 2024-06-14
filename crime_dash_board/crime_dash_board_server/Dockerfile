@@ -1,6 +1,7 @@
-FROM python:3.12.2
+FROM python:3.11
 
-RUN pip install fastapi 'uvicorn[all]'
+
+RUN pip install gunicorn
 
 COPY . /src
 WORKDIR /src

@@ -20,6 +20,7 @@ module.exports = {
     '@typescript-eslint/no-explicit-any' : ['off'],
     'react-hooks/exhaustive-deps' : ['off'],
     'prefer-const' : ['off'],
-    'react-refresh/only-export-components': ["off"]
+    'react-refresh/only-export-components': ["off"],
+    'declared but its value is never read' : ["off"]
     },
 }

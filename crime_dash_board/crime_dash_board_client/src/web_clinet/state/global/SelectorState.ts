@@ -4,7 +4,7 @@ import { ICrimeBranchMainTransitionSeleted, ICrimeBranchSelected, ICrimeBranchSu
 
 export const main_transition_state = atomFamily<ICrimeBranchMainTransitionSeleted,string>({
     key : "main_transition_selector",
-    default : (key : string) => 
+    default : () => 
         atom<ICrimeBranchMainTransitionSeleted>({
             key : "transition_key",
             default : {
@@ -18,7 +18,7 @@ export const main_transition_state = atomFamily<ICrimeBranchMainTransitionSelete
 
 export const total_branch_state = atomFamily<ICrimeBranchSelected,string>({
     key : "total_branch_selector",
-    default : (key : string) => 
+    default : () => 
         atom<ICrimeBranchSelected>({
             key : "total_branch_key",
             default : {
@@ -31,7 +31,7 @@ export const total_branch_state = atomFamily<ICrimeBranchSelected,string>({
 
 export const sub_subject = atomFamily<ICrimeBranchSubSubjectSeleted,string>({
     key : "sub_subject_selector",
-    default : (key : string) => 
+    default : () => 
         atom<ICrimeBranchSubSubjectSeleted>({
             key : "sub_subject_key",
             default : {
